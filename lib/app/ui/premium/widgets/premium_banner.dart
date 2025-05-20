@@ -102,7 +102,7 @@ class PremiumBanner extends StatelessWidget {
               bottom: -10,
               right: 0,
               child: Image.asset(
-                Assets.images.premiumBannerImage.path,
+                Assets.images.premium.premiumBannerImage.path,
                 width: 200.spMin,
               ),
             ),

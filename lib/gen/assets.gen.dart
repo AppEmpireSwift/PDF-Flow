@@ -19,38 +19,14 @@ class $AssetsImagesGen {
   $AssetsImagesOnboardingGen get onboarding =>
       const $AssetsImagesOnboardingGen();
 
-  /// File path: assets/images/paywall.png
-  AssetGenImage get paywall => const AssetGenImage('assets/images/paywall.png');
-
-  /// File path: assets/images/paywall_album.png
-  AssetGenImage get paywallAlbum =>
-      const AssetGenImage('assets/images/paywall_album.png');
-
-  /// File path: assets/images/paywall_ipad.png
-  AssetGenImage get paywallIpad =>
-      const AssetGenImage('assets/images/paywall_ipad.png');
-
-  /// File path: assets/images/paywall_se.png
-  AssetGenImage get paywallSe =>
-      const AssetGenImage('assets/images/paywall_se.png');
-
-  /// File path: assets/images/premium_banner_image.png
-  AssetGenImage get premiumBannerImage =>
-      const AssetGenImage('assets/images/premium_banner_image.png');
+  /// Directory path: assets/images/premium
+  $AssetsImagesPremiumGen get premium => const $AssetsImagesPremiumGen();
 
   /// File path: assets/images/splash.png
   AssetGenImage get splash => const AssetGenImage('assets/images/splash.png');
 
   /// List of all assets
-  List<AssetGenImage> get values => [
-    brain,
-    paywall,
-    paywallAlbum,
-    paywallIpad,
-    paywallSe,
-    premiumBannerImage,
-    splash,
-  ];
+  List<AssetGenImage> get values => [brain, splash];
 }
 
 class $AssetsLottieGen {
@@ -264,6 +240,39 @@ class $AssetsImagesOnboardingGen {
     onb4Album,
     onb4Ipad,
     onb4Se,
+  ];
+}
+
+class $AssetsImagesPremiumGen {
+  const $AssetsImagesPremiumGen();
+
+  /// File path: assets/images/premium/paywall.png
+  AssetGenImage get paywall =>
+      const AssetGenImage('assets/images/premium/paywall.png');
+
+  /// File path: assets/images/premium/paywall_album.png
+  AssetGenImage get paywallAlbum =>
+      const AssetGenImage('assets/images/premium/paywall_album.png');
+
+  /// File path: assets/images/premium/paywall_ipad.png
+  AssetGenImage get paywallIpad =>
+      const AssetGenImage('assets/images/premium/paywall_ipad.png');
+
+  /// File path: assets/images/premium/paywall_se.png
+  AssetGenImage get paywallSe =>
+      const AssetGenImage('assets/images/premium/paywall_se.png');
+
+  /// File path: assets/images/premium/premium_banner_image.png
+  AssetGenImage get premiumBannerImage =>
+      const AssetGenImage('assets/images/premium/premium_banner_image.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [
+    paywall,
+    paywallAlbum,
+    paywallIpad,
+    paywallSe,
+    premiumBannerImage,
   ];
 }
 

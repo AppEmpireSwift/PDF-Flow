@@ -26,14 +26,14 @@ class MainPaywallPage extends StatelessWidget {
     String bg;
     switch (uiHelper.deviceType) {
       case AppleDeviceType.iphoneSe:
-        bg = Assets.images.paywallSe.path;
+        bg = Assets.images.premium.paywallSe.path;
       case AppleDeviceType.iphoneBase:
-        bg = Assets.images.paywall.path;
+        bg = Assets.images.premium.paywall.path;
       case AppleDeviceType.ipad:
         if (uiHelper.isLandscape) {
-          bg = Assets.images.paywallAlbum.path;
+          bg = Assets.images.premium.paywallAlbum.path;
         } else {
-          bg = Assets.images.paywallIpad.path;
+          bg = Assets.images.premium.paywallIpad.path;
         }
     }
     return PaywallWrapper(
