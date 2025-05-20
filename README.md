@@ -26,6 +26,9 @@ It's contains fully operational onboarding with apphud integration, settings, pr
     - Run `dart run build_runner build --delete-conflicting-outputs` to generate assets
 
 7. Edit and create new ui at `lib/app/ui/...`:
+    - Set up your flutter splash page at `lib/app/ui/splash.page.dart`
     - Use global service `uiHelper` to detect deviceType and orientation
     - Set up your app styles at folder `lib/style/`
     - Save project structure - create folders for *features* and separate *widgets* and *pages*
+    - Use `OnBoardingHelper` service to requestReview and control onboarding status
+    - Check and use functions from `lib/core/utils.dart`
