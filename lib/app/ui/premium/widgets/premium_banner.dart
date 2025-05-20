@@ -1,8 +1,8 @@
 import 'package:apphud_helper/apphud_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_wa_skeleton/app/ui/premium/main_paywall.page.dart';
-import 'package:flutter_wa_skeleton/gen/assets.gen.dart';
+import 'package:PDF_Flow/app/ui/premium/main_paywall.page.dart';
+import 'package:PDF_Flow/gen/assets.gen.dart';
 
 import '../../../../style/style.dart';
 

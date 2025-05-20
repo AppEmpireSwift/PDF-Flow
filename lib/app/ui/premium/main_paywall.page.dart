@@ -4,8 +4,8 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_wa_skeleton/core/services/ui.helper.dart';
-import 'package:flutter_wa_skeleton/core/ui/home_indicator_space.dart';
+import 'package:PDF_Flow/core/services/ui.helper.dart';
+import 'package:PDF_Flow/core/ui/home_indicator_space.dart';
 
 import '../../../core/core.dart';
 import '../../../gen/assets.gen.dart';

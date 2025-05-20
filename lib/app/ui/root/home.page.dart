@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:flutter_wa_skeleton/app/app.dart';
-import 'package:flutter_wa_skeleton/app/ui/premium/widgets/premium_banner.dart';
-import 'package:flutter_wa_skeleton/app/ui/settings/settings.page.dart';
-import 'package:flutter_wa_skeleton/app/ui/statistic/widgets/week_stats.dart';
+import 'package:PDF_Flow/app/app.dart';
+import 'package:PDF_Flow/app/ui/premium/widgets/premium_banner.dart';
+import 'package:PDF_Flow/app/ui/settings/settings.page.dart';
+import 'package:PDF_Flow/app/ui/statistic/widgets/week_stats.dart';
 
 import '../../../core/core.dart';
 import '../../../gen/assets.gen.dart';

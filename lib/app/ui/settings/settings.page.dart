@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_wa_skeleton/app/ui/premium/widgets/premium_banner.dart';
+import 'package:PDF_Flow/app/ui/premium/widgets/premium_banner.dart';
 
 import '../../../core/core.dart';
 import '../common/back_button.dart';

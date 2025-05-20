@@ -44,7 +44,7 @@ packages:
       path: "."
       ref: "0.3.1"
       resolved-ref: "0a67142e8f9332223afa15fba7a608a6e7b4a61b"
-      url: "https://github.com/AppEmpireSwift/apphud_helper.git"
+      url: "git@github.com:AppEmpireSwift/apphud_helper.git"
     source: git
     version: "0.3.1"
   archive:

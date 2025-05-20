@@ -1,4 +1,4 @@
-name: flutter_wa_skeleton
+name: PDF_Flow
 description: "A base app"
 publish_to: "none"
 
@@ -29,7 +29,7 @@ dependencies:
   path_provider: 2.1.5
   apphud_helper:
     git:
-      url: https://github.com/AppEmpireSwift/apphud_helper.git
+      url: git@github.com:AppEmpireSwift/apphud_helper.git
       ref: 0.3.1
   new_version_plus: 0.1.0
 

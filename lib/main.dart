@@ -15,7 +15,7 @@ void main() async {
   await Core.init(
     //todo fill the config
     config: CommonConfig(
-      appName: 'Arithmetic Adventure',
+      appName: 'PDF_Flow',
 
       ///base iphone size
       figmaDesignSize: Size(375, 812),
