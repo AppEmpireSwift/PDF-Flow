@@ -79,17 +79,17 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
     }
 
     /// Strings from your figma design
-    final firstTitles = ['User Choice', 'We value', 'Use'];
+    final firstTitles = ['User Choice', 'We value', 'Use', 'Unlimited'];
     final secondTitles = [
-      'Math Brain Booster',
+      'File Converter',
       'Your Feedback',
       Core.config.appName,
-      // 'Arithmetic Adventure',
+      'Access',
     ];
     final descriptions = [
-      'Exercise your brain, learn some quick\ncomputational know-how for fast computations',
+      'Import files and convert them\nto the desired format',
       'Share your opinion about\n${Core.config.appName}',
-      'Practice with lots of fun challenges\nand track your progress',
+      'Merge files into PDFs, manage pages\nand password protect documents',
     ];
 
     ///
@@ -305,6 +305,8 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                       return page;
                     },
                   ),
+
+                  SizedBox(height: 20),
                   TermsAndPolicySection(),
                   HomeIndicatorSpace(),
                 ],

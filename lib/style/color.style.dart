@@ -36,6 +36,44 @@ class ColorStyles {
   static const color0 = Color(0xFFC7C7CC);
 
   static const gray2Dark = Color(0xFF636366);
+
+
+
+
+  static const Color Primary = Color(0xFFDC2626); 
+
+static const Color Background = Color(0xFFFFEFEF);
+
+static const Color Surface = Color(0xFFFFFFFF);
+
+static const Color On_Background = Color(0xFF232323);
+
+static const Color On_Primary = Color(0xFFFFFFFF);
+
+static const Color On_surface = Color(0xFF232323);
+
+static const Color Dark_pink = Color(0xFFF7CECE);
+
+static const Color Red = Color(0xFFDC2626);
+
+static const Color Outline = Color(0xFF8E8E93);
+
+static const Color Dark_gray = Color(0xFFE5D7D7);
+
+static const Color Grey = Color(0xFF8E8E93);
+
+static const Color Outline_red = Color(0xFFDC2626);
+
+static const Color Light_gray = Color(0xFFE5E5E5);
+
+static const Color Black = Color(0xFF232323);
+
+static const Color Light_Pink = Color(0x1FDC2626);
+
+static const Color Pink = Color(0xFFFBE5E5);
+
+static const Color White = Color(0xFFFFFFFF);
+
 }
 
 class ThemeColors {

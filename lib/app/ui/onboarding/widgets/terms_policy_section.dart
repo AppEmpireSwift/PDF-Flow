@@ -12,60 +12,71 @@ class TermsAndPolicySection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return Opacity(
       opacity: 0.4,
-      child: Row(
-        mainAxisSize: MainAxisSize.max,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          InkWell(
-            onTap: () {
-              HapticFeedback.lightImpact();
-              openTermsOfUse(context);
-            },
-            child: Ink(
-              height: 42.spMin,
-              padding: EdgeInsets.symmetric(horizontal: 8.r),
-              child: Center(
-                child: Text('Terms of Use', style: TextStyles.footnoteRegular),
-              ),
+      child: SizedBox(
+        height: 21.spMin, // Устанавливаем высоту явно
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            _buildLink(
+              context,
+              label: 'Terms of Use',
+              onTap: () {
+                HapticFeedback.lightImpact();
+                openTermsOfUse(context);
+              },
             ),
-          ),
-          InkWell(
-            onTap: () {
-              HapticFeedback.lightImpact();
-              openPrivacyPolicy(context);
-            },
-            child: Ink(
-              height: 42.spMin,
-              padding: EdgeInsets.symmetric(horizontal: 8.r),
-              child: Center(
-                child: Text(
-                  'Privacy Policy',
-                  style: TextStyles.footnoteRegular,
-                ),
-              ),
+            _buildDivider(),
+            _buildLink(
+              context,
+              label: 'Privacy Policy',
+              onTap: () {
+                HapticFeedback.lightImpact();
+                openPrivacyPolicy(context);
+              },
             ),
-          ),
-          SeparateRestorePurchaseButtonBuilder(
-            buttonBuilder: (buttonText, onPressed) {
-              return InkWell(
-                onTap: () {
-                  HapticFeedback.lightImpact();
-                  onPressed.call();
-                },
-                child: Ink(
-                  height: 42.spMin,
-                  padding: EdgeInsets.symmetric(horizontal: 8.r),
-                  child: Center(
-                    child: Text(buttonText, style: TextStyles.footnoteRegular),
-                  ),
-                ),
-              );
-            },
-          ),
-        ],
+            _buildDivider(),
+            SeparateRestorePurchaseButtonBuilder(
+              buttonBuilder: (buttonText, onPressed) {
+                return _buildLink(
+                  context,
+                  label: buttonText,
+                  onTap: () {
+                    HapticFeedback.lightImpact();
+                    onPressed.call();
+                  },
+                );
+              },
+            ),
+          ],
+        ),
       ),
     );
   }
+
+  Widget _buildLink(BuildContext context,
+      {required String label, required VoidCallback onTap}) {
+    return InkWell(
+      onTap: onTap,
+      child: Ink(
+        padding: EdgeInsets.symmetric(horizontal: 8.r),
+        child: Center(
+          child: Text(label, style: TextStyles.footnoteRegular),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildDivider() {
+    return Container(
+      height: double.infinity,
+      width: 1,
+      color: Colors.grey, // Цвет разделителя
+      margin: EdgeInsets.symmetric(horizontal: 8.r),
+    );
+  }
 }
+
