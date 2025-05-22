@@ -169,7 +169,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                               TextSpan(text: '\n'),
                               TextSpan(
                                 text: secondTitles[pageNumber],
-                                style: TextStyle(color: ColorStyles.indigo),
+                                style: TextStyle(color: ColorStyles.Primary),
                               ),
                             ],
                           ),
@@ -258,13 +258,13 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                           SizedBox(
                             height: 26.r,
                             child: SmoothPageIndicator(
-                              effect: ExpandingDotsEffect(
-                                dotColor: ColorStyles.indigoWithOpacity,
-                                activeDotColor: ColorStyles.indigo,
-                                dotHeight: 6.r,
-                                dotWidth: 6.r,
-                                expansionFactor: 4,
-                                spacing: 4.r,
+                              effect: SlideEffect(
+                                dotColor: ColorStyles.Pink,// бледно-красный
+                                activeDotColor: ColorStyles.Primary, // ярко-красный
+                                dotHeight: 8.r,
+                                dotWidth: 8.r,
+                                spacing: 8.r,
+                                radius: 8.r,
                               ),
                               controller: _pageController,
                               count: pages.length,

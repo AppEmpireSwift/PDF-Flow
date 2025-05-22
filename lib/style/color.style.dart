@@ -82,7 +82,7 @@ class ThemeColors {
   static const appBarBackground = ColorStyles.bgSecondary;
   static const appBarForeground = ColorStyles.primaryTxt;
 
-  static const filledButton = ColorStyles.indigo;
+  static const filledButton = ColorStyles.Primary;
   static const filledButtonDisalbed = ColorStyles.fillsTertiary;
   static const filledButtonForeground = ColorStyles.white;
   static const filledButtonText = ColorStyles.white;
