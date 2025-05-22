@@ -24,7 +24,7 @@ class HomePage extends StatelessWidget {
         centerTitle: false,
 
         automaticallyImplyLeading: false,
-        titleSpacing: 10.r,
+        titleSpacing: 16.r,
         actions: [
           IconButton(
             onPressed: () {},
