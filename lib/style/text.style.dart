@@ -20,6 +20,16 @@ class TextStyles {
         letterSpacing: -0.4,
       ).rz;
 
+      static var ForlargeTitleRegular =
+      TextStyle(
+        fontSize: 28,
+        height: 28 / 36,
+        fontWeight: FontWeight.w800,
+        letterSpacing: 0,
+        color: ColorStyles.Red,
+      ).rz;
+
+
   static var largeTitleEmphasized =
       TextStyle(
         fontSize: 34,
@@ -69,6 +79,14 @@ class TextStyles {
       ).rz;
 
   static var title3Emphasized =
+      TextStyle(
+        fontSize: 20,
+        height: 25 / 20,
+        fontWeight: FontWeight.w700,
+        letterSpacing: -0.4,
+      ).rz;
+
+  static var A =
       TextStyle(
         fontSize: 20,
         height: 25 / 20,

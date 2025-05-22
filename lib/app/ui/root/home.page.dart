@@ -6,6 +6,8 @@ import 'package:PDF_Flow/app/ui/premium/widgets/premium_banner.dart';
 import 'package:PDF_Flow/app/ui/settings/settings.page.dart';
 import 'package:PDF_Flow/app/ui/statistic/widgets/week_stats.dart';
 
+import 'package:flutter_svg/flutter_svg.dart';
+
 import '../../../core/core.dart';
 import '../../../gen/assets.gen.dart';
 import '../../../style/style.dart';
@@ -17,20 +19,17 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(Core.config.appName, style: TextStyles.title3Emphasized),
+        
+      title: Text('File Converter', style: TextStyles.ForlargeTitleRegular),
         centerTitle: false,
+
         automaticallyImplyLeading: false,
-        titleSpacing: 16.r,
+        titleSpacing: 10.r,
         actions: [
           IconButton(
             onPressed: () {},
-            style: ButtonStyle(
-              backgroundColor: WidgetStatePropertyAll(
-                ColorStyles.yellowWithOpacity,
-              ),
-            ),
 
-            icon: SvgPicture.asset(Assets.vectors.statistic),
+             icon: SvgPicture.asset(Assets.vectors.statistic),
           ),
 
           IconButton(
@@ -50,6 +49,7 @@ class HomePage extends StatelessWidget {
           ),
         ],
       ),
+      
       body: ListView(
         padding: EdgeInsets.all(16).r,
         children: [

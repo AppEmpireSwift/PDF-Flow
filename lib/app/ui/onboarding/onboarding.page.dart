@@ -151,7 +151,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                                     TextSpan(
                                       text: titles.last,
                                       style: TextStyle(
-                                        color: ColorStyles.indigo,
+                                        color: ColorStyles.Primary,
                                       ),
                                     ),
                                 ],
@@ -225,7 +225,19 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                         button = PurchaseButtonBuilder(
                           buttonBuilder: (buttonText, onPressed) {
                             return WAFilledButton(
-                              onPressed: onPressed,
+                              onPressed: () {
+                                // Отметить, что онбординг завершён
+                                OnBoardingHelper.markOnBoardingAsWatched();
+
+                                // Навигация на нужный экран
+                                Navigator.of(
+                                  context,
+                                  rootNavigator: true,
+                                ).pushReplacement(
+                                  Home.route(),
+                                ); // или другой экран
+                              },
+                              
                               child: Center(child: Text(buttonText)),
                             );
                           },
@@ -259,8 +271,9 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                             height: 26.r,
                             child: SmoothPageIndicator(
                               effect: SlideEffect(
-                                dotColor: ColorStyles.Pink,// бледно-красный
-                                activeDotColor: ColorStyles.Primary, // ярко-красный
+                                dotColor: ColorStyles.Pink, // бледно-красный
+                                activeDotColor:
+                                    ColorStyles.Primary, // ярко-красный
                                 dotHeight: 8.r,
                                 dotWidth: 8.r,
                                 spacing: 8.r,
