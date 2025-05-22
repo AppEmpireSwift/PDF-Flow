@@ -158,9 +158,17 @@ class $AssetsVectorsGen {
 class $AssetsImagesOnboardingGen {
   const $AssetsImagesOnboardingGen();
 
+  /// Directory path: assets/images/onboarding/images
+  $AssetsImagesOnboardingImagesGen get images =>
+      const $AssetsImagesOnboardingImagesGen();
+
   /// File path: assets/images/onboarding/onb1.png
   AssetGenImage get onb1 =>
       const AssetGenImage('assets/images/onboarding/onb1.png');
+
+  /// File path: assets/images/onboarding/onb11.png
+  AssetGenImage get onb11 =>
+      const AssetGenImage('assets/images/onboarding/onb11.png');
 
   /// File path: assets/images/onboarding/onb1_album.png
   AssetGenImage get onb1Album =>
@@ -225,6 +233,7 @@ class $AssetsImagesOnboardingGen {
   /// List of all assets
   List<AssetGenImage> get values => [
     onb1,
+    onb11,
     onb1Album,
     onb1Ipad,
     onb1Se,
@@ -274,6 +283,10 @@ class $AssetsImagesPremiumGen {
     paywallSe,
     premiumBannerImage,
   ];
+}
+
+class $AssetsImagesOnboardingImagesGen {
+  const $AssetsImagesOnboardingImagesGen();
 }
 
 class Assets {
