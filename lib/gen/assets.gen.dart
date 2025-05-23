@@ -42,6 +42,12 @@ class $AssetsLottieGen {
 class $AssetsVectorsGen {
   const $AssetsVectorsGen();
 
+  /// File path: assets/vectors/Files1.svg
+  String get files1 => 'assets/vectors/Files1.svg';
+
+  /// File path: assets/vectors/Settings1.svg
+  String get settings1 => 'assets/vectors/Settings1.svg';
+
   /// File path: assets/vectors/agree_button.svg
   String get agreeButton => 'assets/vectors/agree_button.svg';
 
@@ -50,6 +56,9 @@ class $AssetsVectorsGen {
 
   /// File path: assets/vectors/brain.svg
   String get brain => 'assets/vectors/brain.svg';
+
+  /// File path: assets/vectors/convert.svg
+  String get convert => 'assets/vectors/convert.svg';
 
   /// File path: assets/vectors/crown.svg
   String get crown => 'assets/vectors/crown.svg';
@@ -123,11 +132,17 @@ class $AssetsVectorsGen {
   /// File path: assets/vectors/statistic.svg
   String get statistic => 'assets/vectors/statistic.svg';
 
+  /// File path: assets/vectors/statistic1.svg
+  String get statistic1 => 'assets/vectors/statistic1.svg';
+
   /// List of all assets
   List<String> get values => [
+    files1,
+    settings1,
     agreeButton,
     arrowButton,
     brain,
+    convert,
     crown,
     deleteButton,
     disagreeButton,
@@ -152,6 +167,7 @@ class $AssetsVectorsGen {
     statCheckmark,
     statMinus,
     statistic,
+    statistic1,
   ];
 }
 
@@ -170,6 +186,18 @@ class $AssetsImagesOnboardingGen {
   AssetGenImage get onb11 =>
       const AssetGenImage('assets/images/onboarding/onb11.png');
 
+  /// File path: assets/images/onboarding/onb11_album.png
+  AssetGenImage get onb11Album =>
+      const AssetGenImage('assets/images/onboarding/onb11_album.png');
+
+  /// File path: assets/images/onboarding/onb11_ipad.png
+  AssetGenImage get onb11Ipad =>
+      const AssetGenImage('assets/images/onboarding/onb11_ipad.png');
+
+  /// File path: assets/images/onboarding/onb11_se.png
+  AssetGenImage get onb11Se =>
+      const AssetGenImage('assets/images/onboarding/onb11_se.png');
+
   /// File path: assets/images/onboarding/onb1_album.png
   AssetGenImage get onb1Album =>
       const AssetGenImage('assets/images/onboarding/onb1_album.png');
@@ -185,6 +213,22 @@ class $AssetsImagesOnboardingGen {
   /// File path: assets/images/onboarding/onb2.png
   AssetGenImage get onb2 =>
       const AssetGenImage('assets/images/onboarding/onb2.png');
+
+  /// File path: assets/images/onboarding/onb22.png
+  AssetGenImage get onb22 =>
+      const AssetGenImage('assets/images/onboarding/onb22.png');
+
+  /// File path: assets/images/onboarding/onb22_album.png
+  AssetGenImage get onb22Album =>
+      const AssetGenImage('assets/images/onboarding/onb22_album.png');
+
+  /// File path: assets/images/onboarding/onb22_ipad.png
+  AssetGenImage get onb22Ipad =>
+      const AssetGenImage('assets/images/onboarding/onb22_ipad.png');
+
+  /// File path: assets/images/onboarding/onb22_se.png
+  AssetGenImage get onb22Se =>
+      const AssetGenImage('assets/images/onboarding/onb22_se.png');
 
   /// File path: assets/images/onboarding/onb2_album.png
   AssetGenImage get onb2Album =>
@@ -202,6 +246,22 @@ class $AssetsImagesOnboardingGen {
   AssetGenImage get onb3 =>
       const AssetGenImage('assets/images/onboarding/onb3.png');
 
+  /// File path: assets/images/onboarding/onb33.png
+  AssetGenImage get onb33 =>
+      const AssetGenImage('assets/images/onboarding/onb33.png');
+
+  /// File path: assets/images/onboarding/onb33_album.png
+  AssetGenImage get onb33Album =>
+      const AssetGenImage('assets/images/onboarding/onb33_album.png');
+
+  /// File path: assets/images/onboarding/onb33_ipad.png
+  AssetGenImage get onb33Ipad =>
+      const AssetGenImage('assets/images/onboarding/onb33_ipad.png');
+
+  /// File path: assets/images/onboarding/onb33_se.png
+  AssetGenImage get onb33Se =>
+      const AssetGenImage('assets/images/onboarding/onb33_se.png');
+
   /// File path: assets/images/onboarding/onb3_album.png
   AssetGenImage get onb3Album =>
       const AssetGenImage('assets/images/onboarding/onb3_album.png');
@@ -217,6 +277,22 @@ class $AssetsImagesOnboardingGen {
   /// File path: assets/images/onboarding/onb4.png
   AssetGenImage get onb4 =>
       const AssetGenImage('assets/images/onboarding/onb4.png');
+
+  /// File path: assets/images/onboarding/onb44.png
+  AssetGenImage get onb44 =>
+      const AssetGenImage('assets/images/onboarding/onb44.png');
+
+  /// File path: assets/images/onboarding/onb44_album.png
+  AssetGenImage get onb44Album =>
+      const AssetGenImage('assets/images/onboarding/onb44_album.png');
+
+  /// File path: assets/images/onboarding/onb44_ipad.png
+  AssetGenImage get onb44Ipad =>
+      const AssetGenImage('assets/images/onboarding/onb44_ipad.png');
+
+  /// File path: assets/images/onboarding/onb44_se.png
+  AssetGenImage get onb44Se =>
+      const AssetGenImage('assets/images/onboarding/onb44_se.png');
 
   /// File path: assets/images/onboarding/onb4_album.png
   AssetGenImage get onb4Album =>
@@ -234,18 +310,33 @@ class $AssetsImagesOnboardingGen {
   List<AssetGenImage> get values => [
     onb1,
     onb11,
+    onb11Album,
+    onb11Ipad,
+    onb11Se,
     onb1Album,
     onb1Ipad,
     onb1Se,
     onb2,
+    onb22,
+    onb22Album,
+    onb22Ipad,
+    onb22Se,
     onb2Album,
     onb2Ipad,
     onb2Se,
     onb3,
+    onb33,
+    onb33Album,
+    onb33Ipad,
+    onb33Se,
     onb3Album,
     onb3Ipad,
     onb3Se,
     onb4,
+    onb44,
+    onb44Album,
+    onb44Ipad,
+    onb44Se,
     onb4Album,
     onb4Ipad,
     onb4Se,
