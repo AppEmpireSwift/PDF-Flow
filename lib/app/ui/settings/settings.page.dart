@@ -18,10 +18,9 @@ class SettingsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        // leadingWidth: 70,
-        // leading: WABackButton(),
+        backgroundColor: ColorStyles.Surface,
         centerTitle: false,
-        title: Text('Settings', style: TextStyles.ForlargeTitleRegular),
+            title: Text('Settings', style: TextStyles.ForlargeTitleRegular),
       ),
       body: Container (
         color: ColorStyles.Background,

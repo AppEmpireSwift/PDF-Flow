@@ -15,54 +15,30 @@ class ConvertPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: ColorStyles.Surface,
+        title: Row(
+          children: [
+            SizedBox(width: 10.w),
+            Text('File Converter', style: TextStyles.ForlargeTitleRegular),
+            Spacer(),
+
+            // actions: [
+            IconButton(
+              onPressed: () {},
+
+              icon: SvgPicture.asset(Assets.vectors.statistic),
+            ),
+            SizedBox(width: 10.w),
+          ],
+        ),
+      ),
       body: Container(
         color: Colors.red[50],
         child: Column(
           mainAxisAlignment:
               MainAxisAlignment.center, // вертикальное центрирование
           children: [
-            Container(
-              color: Colors.white,
-              width: 393.w,
-              height: 80.h,
-              child: Row(
-                //mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  SizedBox(width: 16),
-                  Text(
-                    'File Converter',
-                    style: TextStyles.ForlargeTitleRegular,
-                  ),
-                  Spacer(),
-
-                  // actions: [
-                  IconButton(
-                    onPressed: () {},
-
-                    icon: SvgPicture.asset(Assets.vectors.statistic),
-                  ),
-                  SizedBox(width: 16),
-
-                  //   IconButton(
-                  //     onPressed: () {
-                  //       Navigator.of(
-                  //         context,
-                  //         rootNavigator: true,
-                  //       ).push(SettingsPage.route());
-                  //     },
-                  //     style: ButtonStyle(
-                  //       backgroundColor: WidgetStatePropertyAll(
-                  //         ColorStyles.indigoWithOpacity,
-                  //       ),
-                  //     ),
-
-                  //     icon: SvgPicture.asset(Assets.vectors.settings),
-                  //   ),
-                  // ],
-                ],
-              ),
-            ),
-
             // Центральная карточка
             Container(
               // width: 361.w, // ширина 200 пикселей
@@ -217,4 +193,3 @@ class _GridItem extends StatelessWidget {
     );
   }
 }
-
