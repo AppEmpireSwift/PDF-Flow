@@ -1,3 +1,4 @@
+import 'package:PDF_Flow/app/ui/root/widgets/file_options_menu.dart';
 import 'package:PDF_Flow/style/color.style.dart';
 import 'package:PDF_Flow/style/text.style.dart';
 import 'package:flutter/cupertino.dart';
@@ -66,6 +67,29 @@ class FilledFilesPage extends StatelessWidget {
           Expanded(
             child: ListView(
               children: [
+                FileItemTile(
+                  // iconPath: 'assets/icons/pdf_icon.png',
+                  fileName: 'PDF_File_3456789_234.pdf',
+                  date: '2025-02-10 04:23 PM',
+                  onTap: () {
+                    showModalBottomSheet(
+                      context: context,
+                      backgroundColor: const Color(
+                        0xFFFFF4F4,
+                      ), // светло-розовый фон
+                      shape: const RoundedRectangleBorder(
+                        borderRadius: BorderRadius.vertical(
+                          top: Radius.circular(16),
+                        ),
+                      ),
+                      builder: (context) => const FileOptionsMenu(),
+                    );
+                  },
+                  onMorePressed: () {
+                    // Покажи bottom sheet или popup menu
+                  },
+                ),
+
                 FileItemTile(
                   // iconPath: 'assets/icons/pdf_icon.png',
                   fileName: 'PDF_File_3456789_234.pdf',
