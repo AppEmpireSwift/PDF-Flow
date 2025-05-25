@@ -40,6 +40,7 @@ class FilledFilesPage extends StatelessWidget {
 
       body: Column(
         children: [
+          SizedBox(height: 24.h),
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
@@ -59,6 +60,9 @@ class FilledFilesPage extends StatelessWidget {
               SizedBox(width: 16.w),
             ],
           ),
+
+          SizedBox(height: 24.h),
+
           Expanded(
             child: ListView(
               children: [
@@ -66,6 +70,7 @@ class FilledFilesPage extends StatelessWidget {
                   // iconPath: 'assets/icons/pdf_icon.png',
                   fileName: 'PDF_File_3456789_234.pdf',
                   date: '2025-02-10 04:23 PM',
+                  onTap: () {},
                   onMorePressed: () {
                     // Покажи bottom sheet или popup menu
                   },
