@@ -4,7 +4,7 @@ class FileItemTile extends StatelessWidget {
   // final String iconPath;
   final String fileName;
   final String date;
-  final VoidCallback onTap;
+  final GestureTapDownCallback onTapDown;
   final VoidCallback onMorePressed;
 
   const FileItemTile({
@@ -12,7 +12,7 @@ class FileItemTile extends StatelessWidget {
     //  required this.iconPath,
     required this.fileName,
     required this.date,
-    required this.onTap,
+    required this.onTapDown,
     required this.onMorePressed,
   });
 
@@ -31,7 +31,7 @@ class FileItemTile extends StatelessWidget {
         borderRadius: BorderRadius.circular(12),
         //elevation: 2, // можно добавить тень, если хочешь
         child: InkWell(
-          onTap: onTap,
+          onTapDown: onTapDown,
           borderRadius: BorderRadius.circular(12),
           child: Padding(
         padding: const EdgeInsets.all(12),
