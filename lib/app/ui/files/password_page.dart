@@ -5,19 +5,19 @@ class PasswordPage extends StatefulWidget {
   const PasswordPage({super.key});
 
   @override
-  State<PasswordPage> createState() => _PasswordPageState();
+  State<PasswordPage> createState() => PasswordPageState();
 }
 
-class _PasswordPageState extends State<PasswordPage> {
+class PasswordPageState extends State<PasswordPage> {
   // Текущее состояние процесса ввода пароля (1-6)
   int currentState = 1;
-  
+
   // Введенные символы пароля
   List<String> enteredPassword = [];
-  
+
   // Подтвержденные символы пароля
   List<String> confirmedPassword = [];
-  
+
   // Флаг несовпадения паролей
   bool passwordMismatch = false;
 
@@ -25,23 +25,37 @@ class _PasswordPageState extends State<PasswordPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
-          onPressed: () {
-            // В будущем: добавить логику навигации
-            setState(() {
-              if (currentState > 1) currentState--;
-            });
-          },
+        leading: TextButton(
+    onPressed: () {
+      setState(() {
+        if (currentState > 1) currentState--;
+      });
+    },
+    style: TextButton.styleFrom(
+      padding: EdgeInsets.only(left: 16.w), // Отступ слева
+      tapTargetSize: MaterialTapTargetSize.shrinkWrap, // Уменьшает область нажатия
+    ),
+    child: Row(
+      mainAxisSize: MainAxisSize.min, // Чтобы Row занимал только нужное место
+      children: [
+        Icon(Icons.arrow_back, size: 24.w), // Иконка
+        SizedBox(width: 15.w), // Отступ между иконкой и текстом
+        Text(
+          'Back',
+          style: TextStyle(
+            fontSize: 16.sp,
+            color: Theme.of(context).appBarTheme.actionsIconTheme?.color, // Цвет как у иконок
+          ),
         ),
-        title: currentState == 6 
-            ? null 
-            : Text(currentState == 1 
-                ? 'Создать пароль' 
-                : 'Повторите пароль'),
-        actions: currentState == 1 || currentState == 3
-            ? [TextButton(onPressed: () {}, child: const Text('Создать пароль'))]
-            : null,
+      ],
+    ),
+  ),
+        title: Text('Create password'),
+        // currentState == 6
+        //     ? null
+        //     : Text(currentState == 1
+        //         ? 'Создать пароль'
+        //         : 'Повторите пароль'),
       ),
       body: _buildBody(),
     );
@@ -51,25 +65,25 @@ class _PasswordPageState extends State<PasswordPage> {
     switch (currentState) {
       case 1:
         return _buildEnterPasswordState(
-          title: 'Введите пароль',
+          title: 'Enter code password',
           password: enteredPassword,
         );
       case 2:
-        return _buildPasswordMismatchState();
+        return buildPasswordMismatchState(title: 'Repeat the password');
       case 3:
         return _buildEnterPasswordState(
-          title: 'Повторите пароль',
+          title: 'Repeat the password',
           password: confirmedPassword,
         );
       case 4:
-        return _buildPasswordMismatchState();
+        return buildPasswordMismatchState(title: 'Repeat the password');
       case 5:
         return _buildPasswordSuccessState();
       case 6:
         return _buildPasswordAddedState();
       default:
         return _buildEnterPasswordState(
-          title: 'Введите пароль',
+          title: 'Enter code password',
           password: enteredPassword,
         );
     }
@@ -80,13 +94,14 @@ class _PasswordPageState extends State<PasswordPage> {
     required List<String> password,
   }) {
     return Column(
+      mainAxisAlignment: MainAxisAlignment.end, // Прижимаем элементы к низу
       children: [
         SizedBox(height: 24.h),
         Text(
           title,
           style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.bold),
         ),
-        SizedBox(height: 16.h),
+        SizedBox(height: 24.h),
         // Индикаторы введенных символов (кружочки)
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -98,15 +113,14 @@ class _PasswordPageState extends State<PasswordPage> {
                 height: 24.h,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: index < password.length 
-                      ? Colors.blue 
-                      : Colors.grey[300],
+                  color:
+                      index < password.length ? Colors.blue : Colors.grey[300],
                 ),
               ),
             );
           }),
         ),
-        SizedBox(height: 32.h),
+        SizedBox(height: 132.h),
         // Клавиатура для ввода пароля
         _buildPasswordKeyboard(
           onKeyPressed: (value) {
@@ -136,16 +150,23 @@ class _PasswordPageState extends State<PasswordPage> {
     );
   }
 
-  Widget _buildPasswordMismatchState() {
+  Widget buildPasswordMismatchState({required String title}) {
     return Column(
+      mainAxisAlignment: MainAxisAlignment.end, // Прижимаем элементы к низу
       children: [
         SizedBox(height: 24.h),
         Text(
-          'Пароль не совпадает с введенным ранее',
-          style: TextStyle(
-            fontSize: 18.sp,
-            fontWeight: FontWeight.bold,
-            color: Colors.red,
+          title,
+          style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.bold),
+        ),
+        Center(
+          child: Text(
+            'Password does not match the one entered earlier',
+            style: TextStyle(
+              fontSize: 12.sp,
+              fontWeight: FontWeight.bold,
+              color: Colors.red,
+            ),
           ),
         ),
         SizedBox(height: 16.h),
@@ -251,14 +272,14 @@ class _PasswordPageState extends State<PasswordPage> {
   }) {
     // Клавиши с цифрами и символами
     final keys = [
-      {'1': 'AEBF'},
-      {'2': 'AEK3'},
-      {'3': 'дежа'},
-      {'4': 'Mйкл'},
+      {'1': ''},
+      {'2': 'АБВГ'},
+      {'3': 'ДЕЖЗ'},
+      {'4': 'ИЙКЛ'},
       {'5': 'MH0П'},
       {'6': 'PCTY'},
       {'7': 'ФХЦЧ'},
-      {'8': 'ШШЪЫ'},
+      {'8': 'ШЩЪЫ'},
       {'9': 'bЭЮЯ'},
     ];
 
@@ -280,9 +301,11 @@ class _PasswordPageState extends State<PasswordPage> {
         // Кнопка удаления
         _buildBackspaceKey(onPressed: onBackspacePressed),
         // Кнопка подтверждения
-        _buildConfirmKey(onPressed: () {
-          // В будущем: добавить логику подтверждения
-        }),
+        _buildConfirmKey(
+          onPressed: () {
+            // В будущем: добавить логику подтверждения
+          },
+        ),
       ],
     );
   }
@@ -301,10 +324,7 @@ class _PasswordPageState extends State<PasswordPage> {
             digit,
             style: TextStyle(fontSize: 24.sp, fontWeight: FontWeight.bold),
           ),
-          Text(
-            symbols,
-            style: TextStyle(fontSize: 12.sp),
-          ),
+          Text(symbols, style: TextStyle(fontSize: 12.sp)),
         ],
       ),
     );
