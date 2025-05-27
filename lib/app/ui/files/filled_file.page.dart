@@ -1,5 +1,6 @@
+import 'package:PDF_Flow/app/ui/files/widgets/blur_context_menu.dart';
 import 'package:PDF_Flow/app/ui/root/widgets/context_menu.dart';
-import 'package:PDF_Flow/app/ui/root/widgets/file_options_menu.dart';
+import 'package:PDF_Flow/app/ui/files/widgets/file_options_menu.dart';
 import 'package:PDF_Flow/style/color.style.dart';
 import 'package:PDF_Flow/style/text.style.dart';
 import 'package:flutter/cupertino.dart';
@@ -11,7 +12,7 @@ import 'package:PDF_Flow/app/ui/premium/widgets/premium_banner.dart';
 import 'package:PDF_Flow/app/ui/settings/settings.page.dart';
 import 'package:PDF_Flow/app/ui/statistic/widgets/week_stats.dart';
 
-import 'package:PDF_Flow/app/ui/root/widgets/file_item_tile.dart';
+import 'package:PDF_Flow/app/ui/files/widgets/file_item_tile.dart';
 
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -65,7 +66,7 @@ class FilledFilesPage extends StatelessWidget {
 
           SizedBox(height: 24.h),
 
-          Expanded(
+          Container( child: Expanded(
             child: ListView(
               children: [
                 // FileItemTile(
@@ -90,7 +91,6 @@ class FilledFilesPage extends StatelessWidget {
                 //     // Покажи bottom sheet или popup menu
                 //   },
                 // ),
-
                 FileItemTile(
                   // iconPath: 'assets/icons/pdf_icon.png',
                   fileName: 'PDF_File_3456789_234.pdf',
@@ -103,7 +103,7 @@ class FilledFilesPage extends StatelessWidget {
           onRename: () => print('Rename tapped'),
           onPassword: () => print('Password tapped'),
           onDelete: () => print('Delete tapped'),);
-          },
+                  },
                   onMorePressed: () {
                     // Покажи bottom sheet или popup menu
                   },
@@ -112,6 +112,7 @@ class FilledFilesPage extends StatelessWidget {
               ],
             ),
           ),
+      ),
         ],
       ),
 

@@ -17,7 +17,7 @@ void showContextMenu(BuildContext context, Offset tapPosition, {
       Offset.zero & screenSize,
     ),
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-    color: Colors.white.withOpacity(0.95),
+  color: Colors.white.withOpacity(0.7), // ← Вот здесь прозрачность
     items: [
       ContextMenuItem(icon: Icons.share, label: 'Share', onTap: onShare),
       ContextMenuItem(icon: Icons.edit, label: 'Rename', onTap: onRename),

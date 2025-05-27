@@ -1,6 +1,8 @@
+import 'package:PDF_Flow/app/ui/files/password_page.dart';
 import 'package:PDF_Flow/app/ui/root/bottomnavigation_pages/convert.page.dart';
-import 'package:PDF_Flow/app/ui/root/bottomnavigation_pages/files.page.dart';
-import 'package:PDF_Flow/app/ui/root/bottomnavigation_pages/files_pages/filled_file.page.dart';
+import 'package:PDF_Flow/app/ui/files/files.page.dart';
+import 'package:PDF_Flow/app/ui/files/filled_file.page.dart';
+import 'package:PDF_Flow/app/ui/files/searching_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -43,7 +45,9 @@ class HomePage extends StatefulWidget {
 // Список страниц
   final List<Widget> _pages = [
     ConvertPage(),
-    FilledFilesPage(), 
+    // FilledFilesPage(), 
+    // SearchView(),
+    PasswordPage(),
     SettingsPage(), 
   ];
   @override
