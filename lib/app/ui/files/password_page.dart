@@ -1,3 +1,4 @@
+import 'package:PDF_Flow/style/style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -25,6 +26,7 @@ class PasswordPageState extends State<PasswordPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: ColorStyles.Background,
         leading: TextButton(
     onPressed: () {
       setState(() {
@@ -57,7 +59,7 @@ class PasswordPageState extends State<PasswordPage> {
         //         ? 'Создать пароль'
         //         : 'Повторите пароль'),
       ),
-      body: _buildBody(),
+      body:  Container(color: ColorStyles.Background, child: _buildBody()),
     );
   }
 
@@ -114,7 +116,7 @@ class PasswordPageState extends State<PasswordPage> {
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   color:
-                      index < password.length ? Colors.blue : Colors.grey[300],
+                      index < password.length ? Colors.red : Colors.grey[300],
                 ),
               ),
             );
@@ -370,7 +372,7 @@ _buildKey( // Кнопка 0
       backgroundColor: Colors.white, // Фон кнопки
       foregroundColor: Colors.black, // Цвет текста/иконок
       shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(12.r), // Закругление
+      borderRadius: BorderRadius.circular(5.r), // Закругление
     ),
     padding: EdgeInsets.all(3.w), // Внутренние отступы
     elevation: 5, // Тень
@@ -407,10 +409,10 @@ _buildKey( // Кнопка 0
     );
   }
 
-  Widget _buildConfirmKey({required Function() onPressed}) {
-    return IconButton(
-      onPressed: onPressed,
-      icon: Icon(Icons.check, size: 28.w, color: Colors.green),
-    );
-  }
+  // Widget _buildConfirmKey({required Function() onPressed}) {
+  //   return IconButton(
+  //     onPressed: onPressed,
+  //     icon: Icon(Icons.check, size: 28.w, color: Colors.green),
+  //   );
+  // }
 }

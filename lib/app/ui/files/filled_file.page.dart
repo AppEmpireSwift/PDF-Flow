@@ -1,3 +1,4 @@
+import 'package:PDF_Flow/app/ui/files/password_page.dart';
 import 'package:PDF_Flow/app/ui/files/widgets/blur_context_menu.dart';
 import 'package:PDF_Flow/app/ui/root/widgets/context_menu.dart';
 import 'package:PDF_Flow/app/ui/files/widgets/file_options_menu.dart';
@@ -66,53 +67,63 @@ class FilledFilesPage extends StatelessWidget {
 
           SizedBox(height: 24.h),
 
-          Container( child: Expanded(
-            child: ListView(
-              children: [
-                // FileItemTile(
-                //   // iconPath: 'assets/icons/pdf_icon.png',
-                //   fileName: 'PDF_File_3456789_234.pdf',
-                //   date: '2025-02-10 04:21 PM',
-                //   onTapDown: () {
-                //     // showModalBottomSheet(
-                //     //   context: context,
-                //     //   backgroundColor: const Color(
-                //     //     0xFFFFF4F4,
-                //     //   ), // светло-розовый фон
-                //     //   shape: const RoundedRectangleBorder(
-                //     //     borderRadius: BorderRadius.vertical(
-                //     //       top: Radius.circular(16),
-                //     //     ),
-                //     //   ),
-                //     //   builder: (context) => const FileOptionsMenu(),
-                //     // );
-                //   },
-                //   onMorePressed: () {
-                //     // Покажи bottom sheet или popup menu
-                //   },
-                // ),
-                FileItemTile(
-                  // iconPath: 'assets/icons/pdf_icon.png',
-                  fileName: 'PDF_File_3456789_234.pdf',
-                  date: '2025-02-10 04:23 PM',
-                  onTapDown: (TapDownDetails details) {final position = details.globalPosition;
-        showContextMenu(
-          context,
-          position,
-          onShare: () => print('Share tapped'),
-          onRename: () => print('Rename tapped'),
-          onPassword: () => print('Password tapped'),
-          onDelete: () => print('Delete tapped'),);
-                  },
-                  onMorePressed: () {
-                    // Покажи bottom sheet или popup menu
-                  },
-                ),
-                // и другие элементы
-              ],
+          Container(
+            child: Expanded(
+              child: ListView(
+                children: [
+                  // FileItemTile(
+                  //   // iconPath: 'assets/icons/pdf_icon.png',
+                  //   fileName: 'PDF_File_3456789_234.pdf',
+                  //   date: '2025-02-10 04:21 PM',
+                  //   onTapDown: () {
+                  //     // showModalBottomSheet(
+                  //     //   context: context,
+                  //     //   backgroundColor: const Color(
+                  //     //     0xFFFFF4F4,
+                  //     //   ), // светло-розовый фон
+                  //     //   shape: const RoundedRectangleBorder(
+                  //     //     borderRadius: BorderRadius.vertical(
+                  //     //       top: Radius.circular(16),
+                  //     //     ),
+                  //     //   ),
+                  //     //   builder: (context) => const FileOptionsMenu(),
+                  //     // );
+                  //   },
+                  //   onMorePressed: () {
+                  //     // Покажи bottom sheet или popup menu
+                  //   },
+                  // ),
+                  FileItemTile(
+                    // iconPath: 'assets/icons/pdf_icon.png',
+                    fileName: 'PDF_File_3456789_234.pdf',
+                    date: '2025-02-10 04:23 PM',
+                    onTapDown: (TapDownDetails details) {
+                      
+                      final position = details.globalPosition;
+                      showContextMenu(
+                        context,
+                        position,
+                        onShare: () => print('Share tapped'),
+                        onRename: () => print('Rename tapped'),
+                        onPassword: () => Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder:
+                                    (context) =>
+                                        PasswordPage(), // Ваша целевая страница
+                              ),
+                            ),
+                        onDelete: () => print('Delete tapped'),
+                      );
+                    },
+                    onMorePressed: () {
+                      // Покажи bottom sheet или popup menu
+                    },
+                  ),
+                  // и другие элементы
+                ],
+              ),
             ),
           ),
-      ),
         ],
       ),
 

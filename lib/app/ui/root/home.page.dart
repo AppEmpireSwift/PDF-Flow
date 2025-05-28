@@ -45,9 +45,9 @@ class HomePage extends StatefulWidget {
 // Список страниц
   final List<Widget> _pages = [
     ConvertPage(),
-    // FilledFilesPage(), 
+    FilledFilesPage(), 
     // SearchView(),
-    PasswordPage(),
+    //PasswordPage(),
     SettingsPage(), 
   ];
   @override
