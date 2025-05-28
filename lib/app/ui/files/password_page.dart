@@ -319,6 +319,8 @@ class PasswordPageState extends State<PasswordPage> {
     shrinkWrap: true,
     crossAxisCount: 3,
     childAspectRatio: 2.6,
+    physics: NeverScrollableScrollPhysics(), // Отключаем скролл
+
     //padding: EdgeInsets.zero, // Убираем внутренние отступы GridView
    crossAxisSpacing: 4,
    mainAxisSpacing: 6,
@@ -332,8 +334,14 @@ class PasswordPageState extends State<PasswordPage> {
           onPressed: () => onKeyPressed(digit),
         );
       }),
-      _buildBackspaceKey(onPressed: onBackspacePressed),
-      _buildConfirmKey(onPressed: () {}),
+      //      _buildConfirmKey(onPressed: () {}),
+       // Пустые места для сохранения структуры сетки
+          SizedBox.shrink(),
+_buildKey( // Кнопка 0
+            digit: '0',
+            symbols: '',
+            onPressed: () => onKeyPressed('0'),
+          ),      _buildBackspaceKey(onPressed: onBackspacePressed),
     ],
   ),
 );
@@ -376,7 +384,7 @@ class PasswordPageState extends State<PasswordPage> {
           style: TextStyle(
             fontSize: 17.sp,
             fontWeight: FontWeight.bold,
-            color: Colors.blue, // Цвет цифры
+            color: Colors.black, // Цвет цифры
           ),
         ),
         if (symbols.isNotEmpty)
@@ -384,7 +392,7 @@ class PasswordPageState extends State<PasswordPage> {
             symbols,
             style: TextStyle(
               fontSize: 7.sp,
-              color: Colors.grey, // Цвет символов
+              color: Colors.black, // Цвет символов
             ),
           ),
       ]
