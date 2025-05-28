@@ -38,13 +38,13 @@ class PasswordPageState extends State<PasswordPage> {
     child: Row(
       mainAxisSize: MainAxisSize.min, // Чтобы Row занимал только нужное место
       children: [
-        Icon(Icons.arrow_back, size: 24.w), // Иконка
+        Icon(Icons.arrow_back, size: 10.w), // Иконка
         SizedBox(width: 15.w), // Отступ между иконкой и текстом
         Text(
           'Back',
           style: TextStyle(
-            fontSize: 16.sp,
-            color: Theme.of(context).appBarTheme.actionsIconTheme?.color, // Цвет как у иконок
+            fontSize: 8.sp,
+            //color: Theme.of(context).appBarTheme.actionsIconTheme?.color, // Цвет как у иконок
           ),
         ),
       ],
@@ -120,7 +120,7 @@ class PasswordPageState extends State<PasswordPage> {
             );
           }),
         ),
-        SizedBox(height: 132.h),
+        SizedBox(height: 30.h),
         // Клавиатура для ввода пароля
         _buildPasswordKeyboard(
           onKeyPressed: (value) {
@@ -283,31 +283,60 @@ class PasswordPageState extends State<PasswordPage> {
       {'9': 'bЭЮЯ'},
     ];
 
-    return GridView.count(
-      shrinkWrap: true,
-      crossAxisCount: 3,
-      childAspectRatio: 1.5,
-      padding: EdgeInsets.symmetric(horizontal: 24.w),
-      children: [
-        ...keys.map((key) {
-          final digit = key.keys.first;
-          final symbols = key.values.first;
-          return _buildKey(
-            digit: digit,
-            symbols: symbols,
-            onPressed: () => onKeyPressed(digit),
-          );
-        }),
-        // Кнопка удаления
-        _buildBackspaceKey(onPressed: onBackspacePressed),
-        // Кнопка подтверждения
-        _buildConfirmKey(
-          onPressed: () {
-            // В будущем: добавить логику подтверждения
-          },
-        ),
-      ],
-    );
+    // return GridView.count(
+    //   shrinkWrap: true,
+    //   crossAxisCount: 3,
+    //   childAspectRatio: 1.5,
+    //   padding: EdgeInsets.symmetric(horizontal: 24.w),
+    //   children: [
+    //     ...keys.map((key) {
+    //       final digit = key.keys.first;
+    //       final symbols = key.values.first;
+    //       return _buildKey(
+    //         digit: digit,
+    //         symbols: symbols,
+    //         onPressed: () => onKeyPressed(digit),
+    //       );
+    //     }),
+    //     // Кнопка удаления
+    //     _buildBackspaceKey(onPressed: onBackspacePressed),
+    //     // Кнопка подтверждения
+    //     _buildConfirmKey(
+    //       onPressed: () {
+    //         // В будущем: добавить логику подтверждения
+    //       },
+    //     ),
+    //   ],
+    // );
+
+    return Container(
+  decoration: BoxDecoration(
+    color: Colors.grey[200], // Цвет фона
+    borderRadius: BorderRadius.circular(16.r), // Закругление углов
+  ),
+  padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 16.h), // Отступы
+  child: GridView.count(
+    shrinkWrap: true,
+    crossAxisCount: 3,
+    childAspectRatio: 2.6,
+    //padding: EdgeInsets.zero, // Убираем внутренние отступы GridView
+   crossAxisSpacing: 4,
+   mainAxisSpacing: 6,
+    children: [
+      ...keys.map((key) {
+        final digit = key.keys.first;
+        final symbols = key.values.first;
+        return _buildKey(
+          digit: digit,
+          symbols: symbols,
+          onPressed: () => onKeyPressed(digit),
+        );
+      }),
+      _buildBackspaceKey(onPressed: onBackspacePressed),
+      _buildConfirmKey(onPressed: () {}),
+    ],
+  ),
+);
   }
 
   Widget _buildKey({
@@ -315,18 +344,51 @@ class PasswordPageState extends State<PasswordPage> {
     required String symbols,
     required Function() onPressed,
   }) {
-    return TextButton(
-      onPressed: onPressed,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(
-            digit,
-            style: TextStyle(fontSize: 24.sp, fontWeight: FontWeight.bold),
+    // return TextButton(
+    //   onPressed: onPressed,
+    //   child: Column(
+    //     mainAxisAlignment: MainAxisAlignment.center,
+    //     children: [
+    //       Text(
+    //         digit,
+    //         style: TextStyle(fontSize: 24.sp, fontWeight: FontWeight.bold),
+    //       ),
+    //       Text(symbols, style: TextStyle(fontSize: 12.sp)),
+    //     ],
+    //   ),
+    // );
+    return ElevatedButton(
+    style: ElevatedButton.styleFrom(
+      backgroundColor: Colors.white, // Фон кнопки
+      foregroundColor: Colors.black, // Цвет текста/иконок
+      shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(12.r), // Закругление
+    ),
+    padding: EdgeInsets.all(3.w), // Внутренние отступы
+    elevation: 5, // Тень
+    ),
+    onPressed: onPressed,
+    child: Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Text(
+          digit,
+          style: TextStyle(
+            fontSize: 17.sp,
+            fontWeight: FontWeight.bold,
+            color: Colors.blue, // Цвет цифры
           ),
-          Text(symbols, style: TextStyle(fontSize: 12.sp)),
-        ],
-      ),
+        ),
+        if (symbols.isNotEmpty)
+          Text(
+            symbols,
+            style: TextStyle(
+              fontSize: 7.sp,
+              color: Colors.grey, // Цвет символов
+            ),
+          ),
+      ]
+    ),
     );
   }
 
