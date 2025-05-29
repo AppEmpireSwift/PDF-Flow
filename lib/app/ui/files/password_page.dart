@@ -1,3 +1,4 @@
+import 'package:PDF_Flow/app/ui/root/home.page.dart';
 import 'package:PDF_Flow/style/style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -30,7 +31,13 @@ class PasswordPageState extends State<PasswordPage> {
         leading: TextButton(
     onPressed: () {
       setState(() {
-        if (currentState > 1) currentState--;
+         (currentState > 1)? currentState-- : Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder:
+                                    (context) =>
+                                        HomePage(), // Ваша целевая страница
+                              ),
+                            );
       });
     },
     style: TextButton.styleFrom(

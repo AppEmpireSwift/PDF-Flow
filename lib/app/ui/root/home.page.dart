@@ -1,3 +1,4 @@
+import 'package:PDF_Flow/app/ui/files/delete_file.dart';
 import 'package:PDF_Flow/app/ui/files/password_page.dart';
 import 'package:PDF_Flow/app/ui/root/bottomnavigation_pages/convert.page.dart';
 import 'package:PDF_Flow/app/ui/files/files.page.dart';
@@ -45,7 +46,8 @@ class HomePage extends StatefulWidget {
 // Список страниц
   final List<Widget> _pages = [
     ConvertPage(),
-    FilledFilesPage(), 
+    DeleteFilesPage(),
+    //FilledFilesPage(), 
     // SearchView(),
     //PasswordPage(),
     SettingsPage(), 
@@ -60,6 +62,7 @@ class HomePage extends StatefulWidget {
       ),
 
       bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: ColorStyles.Surface,
         currentIndex: 0,
         selectedItemColor: ColorStyles.Outline_red,
         unselectedItemColor: Colors.grey,
