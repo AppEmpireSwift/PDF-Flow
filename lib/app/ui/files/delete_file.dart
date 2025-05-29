@@ -46,7 +46,7 @@ class DeleteFilesPage extends StatelessWidget {
           ),
         ],
       ),
-      body: Container(  color: ColorStyles.Background)
+      body: Container(color: ColorStyles.Background),
     );
   }
 
@@ -54,28 +54,61 @@ class DeleteFilesPage extends StatelessWidget {
     showDialog(
       context: context,
       builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text('File deletion'),
-          content: Text('The file will not be saved'),
-          actions: <Widget>[
-            TextButton(
-              child: Text('Cancel'),
-              onPressed: () {
-                Navigator.of(context).pop(); // Закрыть диалог
-              },
+        return Dialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12.0),
+          ),
+          child: Container(
+            color: ColorStyles.Background,
+            // child: Padding(
+            //   padding: const EdgeInsets.all(16.0),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Text(
+                  'File deletion',
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                ),
+                SizedBox(height: 8),
+                Text('The file will not be saved'),
+                SizedBox(height: 24),
+                Divider(
+                  height: 20, // Высота области разделителя (не толщина!)
+                  thickness: 1, // Толщина линии
+                  color: Colors.grey, // Цвет
+                  // indent: 16,       // Отступ слева
+                  // endIndent: 16,    // Отступ справа
+                ),
+                Container( child:
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      TextButton(
+                        child: Text('Cancel'),
+                        onPressed: () => Navigator.of(context).pop(),
+                      ),
+                      SizedBox(width: 16),
+SizedBox(
+        height: 24, // Фиксированная высота разделителя
+        child: VerticalDivider(width: 1, thickness: 1, color: Colors.grey),
+      ),                      TextButton(
+                        child: Text(
+                          'Delete',
+                          style: TextStyle(color: Colors.red),
+                        ),
+                        onPressed: () {
+                          // Действие при удалении
+                          Navigator.of(context).pop();
+                        },
+                      ),
+                    ],
+                  ),
             ),
-            TextButton(
-              child: Text(
-                'Delete',
-                style: TextStyle(color: Colors.red), // Красный цвет для кнопки удаления
-              ),
-              onPressed: () {
-                // Действие при удалении
-                print('Файл удален');
-                Navigator.of(context).pop(); // Закрыть диалог
-              },
+              ],
             ),
-          ],
+            //),
+          ),
         );
       },
     );
