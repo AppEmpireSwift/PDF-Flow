@@ -3,9 +3,44 @@ import 'package:PDF_Flow/app/ui/root/home.page.dart';
 import 'package:PDF_Flow/app/ui/root/widgets/context_menu.dart';
 import 'package:PDF_Flow/style/style.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 
 class DeleteFilesPage extends StatelessWidget {
   const DeleteFilesPage({super.key});
+  void _showCupertinoDeleteDialog(BuildContext context) {
+    showCupertinoDialog(
+      context: context,
+      builder: (context) {
+        return CupertinoAlertDialog(
+          title: Column(
+            children: [
+              Icon(CupertinoIcons.delete_solid, size: 40, color: CupertinoColors.systemRed),
+              SizedBox(height: 12),
+              Text('File deletion'),
+            ],
+          ),
+          content: Padding(
+            padding: const EdgeInsets.only(top: 8.0),
+            child: Text('The file will not be saved'),
+          ),
+          actions: [
+            CupertinoDialogAction(
+              child: Text('Cancel', style: TextStyle(color: Colors.black),),
+              onPressed: () => Navigator.of(context).pop(),
+            ),
+            CupertinoDialogAction(
+              isDestructiveAction: true,
+              child: Text('Delete'),
+              onPressed: () {
+                Navigator.of(context).pop();
+                // Add deletion logic here
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +74,7 @@ class DeleteFilesPage extends StatelessWidget {
                     () => Navigator.of(context).push(
                       MaterialPageRoute(builder: (context) => PasswordPage()),
                     ),
-                onDelete: () => _showDeleteDialog(context),
+                onDelete: () =>_showCupertinoDeleteDialog(context),
               );
             },
             child: Icon(Icons.more_horiz),
@@ -90,9 +125,19 @@ class DeleteFilesPage extends StatelessWidget {
                       ),
                       SizedBox(width: 16),
 SizedBox(
-        height: 24, // Фиксированная высота разделителя
+        height: 72, // Фиксированная высота разделителя
         child: VerticalDivider(width: 1, thickness: 1, color: Colors.grey),
-      ),                      TextButton(
+      ),
+
+                            SizedBox(width: 16),
+
+
+// Container(
+//       height: 48,
+//       width: 1,
+//       color: Colors.grey[300], // Цвет линии
+//     ),
+                      TextButton(
                         child: Text(
                           'Delete',
                           style: TextStyle(color: Colors.red),
