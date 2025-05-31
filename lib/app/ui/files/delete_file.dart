@@ -7,6 +7,56 @@ import 'package:flutter/cupertino.dart';
 
 class DeleteFilesPage extends StatelessWidget {
   const DeleteFilesPage({super.key});
+
+
+
+
+  void _showRenameDialog(BuildContext context) {
+       String fileName = "Documents";
+
+    TextEditingController _controller = TextEditingController(text: fileName);
+
+    showCupertinoDialog(
+      context: context,
+      builder: (context) {
+        return CupertinoAlertDialog(
+          title: Text("Rename"),
+          content: Column(
+            children: [
+              SizedBox(height: 8),
+              Text("Enter a name for the file"),
+              SizedBox(height: 8),
+              CupertinoTextField(
+                controller: _controller,
+                placeholder: 'File name',
+                clearButtonMode: OverlayVisibilityMode.editing,
+              ),
+            ],
+          ),
+          actions: [
+            CupertinoDialogAction(
+              child: Text("Cancel"),
+              onPressed: () => Navigator.pop(context),
+            ),
+            CupertinoDialogAction(
+              child: Text("Save"),
+              isDefaultAction: true,
+              onPressed: () {
+                  fileName = _controller.text.trim();
+                Navigator.pop(context);
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+
+
+
+
+  
   void _showCupertinoDeleteDialog(BuildContext context) {
     showCupertinoDialog(
       context: context,
@@ -69,7 +119,7 @@ class DeleteFilesPage extends StatelessWidget {
                 context,
                 position,
                 onShare: () => print('Share tapped'),
-                onRename: () => print('Rename tapped'),
+                onRename: () => _showRenameDialog(context),
                 onPassword:
                     () => Navigator.of(context).push(
                       MaterialPageRoute(builder: (context) => PasswordPage()),
