@@ -146,7 +146,7 @@ class PasswordPageState extends State<PasswordPage> {
                     // });
                     currentState == 1 ? setState(() {
                       currentState = 3;
-                    })  : _showPasswordDialog(context);
+                    })  : _showPasswordDialog(context, 'Password changed', 'You changed the password for PDF_File_3456789_234.pdf ');
                     
                   });
                 }
@@ -434,8 +434,8 @@ class PasswordPageState extends State<PasswordPage> {
   // }
 
 
-
-void _showPasswordDialog(BuildContext context) {
+//Плашка успешного завершениякакого-либо этапа.
+void _showPasswordDialog(BuildContext context, String title, String description) {
     showDialog(
       context: context,
       barrierDismissible: false, // Чтобы диалог не закрывался при клике вне его
@@ -450,8 +450,8 @@ void _showPasswordDialog(BuildContext context) {
         content: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            const Text(
-              'Password added',
+             Text(
+              title,
               style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
@@ -459,7 +459,7 @@ void _showPasswordDialog(BuildContext context) {
             ),
             const SizedBox(height: 16),
             Text(
-              'You have set a password for PDF_File_3456789_234.pdf',
+              description,
               style: TextStyle(
                 fontSize: 16,
                 color: Colors.grey[600],
