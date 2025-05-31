@@ -29,36 +29,38 @@ class PasswordPageState extends State<PasswordPage> {
       appBar: AppBar(
         backgroundColor: ColorStyles.Background,
         leading: TextButton(
-    onPressed: () {
-      setState(() {
-         (currentState > 1)? currentState-- : Navigator.of(context).push(
-                              MaterialPageRoute(
-                                builder:
-                                    (context) =>
-                                        HomePage(), // Ваша целевая страница
-                              ),
-                            );
-      });
-    },
-    style: TextButton.styleFrom(
-      padding: EdgeInsets.only(left: 16.w), // Отступ слева
-      tapTargetSize: MaterialTapTargetSize.shrinkWrap, // Уменьшает область нажатия
-    ),
-    child: Row(
-      mainAxisSize: MainAxisSize.min, // Чтобы Row занимал только нужное место
-      children: [
-        Icon(Icons.arrow_back, size: 10.w), // Иконка
-        SizedBox(width: 15.w), // Отступ между иконкой и текстом
-        Text(
-          'Back',
-          style: TextStyle(
-            fontSize: 8.sp,
-            //color: Theme.of(context).appBarTheme.actionsIconTheme?.color, // Цвет как у иконок
+          onPressed: () {
+            setState(() {
+              (currentState > 1)
+                  ? currentState--
+                  : Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => HomePage(), // Ваша целевая страница
+                    ),
+                  );
+            });
+          },
+          style: TextButton.styleFrom(
+            padding: EdgeInsets.only(left: 16.w), // Отступ слева
+            tapTargetSize:
+                MaterialTapTargetSize.shrinkWrap, // Уменьшает область нажатия
+          ),
+          child: Row(
+            mainAxisSize:
+                MainAxisSize.min, // Чтобы Row занимал только нужное место
+            children: [
+              Icon(Icons.arrow_back, size: 10.w), // Иконка
+              SizedBox(width: 15.w), // Отступ между иконкой и текстом
+              Text(
+                'Back',
+                style: TextStyle(
+                  fontSize: 8.sp,
+                  //color: Theme.of(context).appBarTheme.actionsIconTheme?.color, // Цвет как у иконок
+                ),
+              ),
+            ],
           ),
         ),
-      ],
-    ),
-  ),
         title: Text('Create password'),
         // currentState == 6
         //     ? null
@@ -66,7 +68,7 @@ class PasswordPageState extends State<PasswordPage> {
         //         ? 'Создать пароль'
         //         : 'Повторите пароль'),
       ),
-      body:  Container(color: ColorStyles.Background, child: _buildBody()),
+      body: Container(color: ColorStyles.Background, child: _buildBody()),
     );
   }
 
@@ -86,8 +88,8 @@ class PasswordPageState extends State<PasswordPage> {
         );
       case 4:
         return buildPasswordMismatchState(title: 'Repeat the password');
-      case 5:
-        return _buildPasswordSuccessState();
+      // case 5:
+      //   return _buildPasswordSuccessState();
       case 6:
         return _buildPasswordAddedState();
       default:
@@ -139,9 +141,13 @@ class PasswordPageState extends State<PasswordPage> {
                 if (password.length == 4) {
                   // В будущем: добавить логику проверки пароля
                   Future.delayed(const Duration(milliseconds: 500), () {
-                    setState(() {
-                      currentState = currentState == 1 ? 3 : 5;
-                    });
+                    // setState(() {
+                    //   currentState = currentState == 1 ? 3 : 5;
+                    // });
+                    currentState == 1 ? setState(() {
+                      currentState = 3;
+                    })  : _showPasswordDialog(context);
+                    
                   });
                 }
               }
@@ -319,41 +325,45 @@ class PasswordPageState extends State<PasswordPage> {
     // );
 
     return Container(
-  decoration: BoxDecoration(
-    color: Colors.grey[200], // Цвет фона
-    borderRadius: BorderRadius.circular(16.r), // Закругление углов
-  ),
-  padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 16.h), // Отступы
-  child: GridView.count(
-    shrinkWrap: true,
-    crossAxisCount: 3,
-    childAspectRatio: 2.6,
-    physics: NeverScrollableScrollPhysics(), // Отключаем скролл
-
-    //padding: EdgeInsets.zero, // Убираем внутренние отступы GridView
-   crossAxisSpacing: 4,
-   mainAxisSpacing: 6,
-    children: [
-      ...keys.map((key) {
-        final digit = key.keys.first;
-        final symbols = key.values.first;
-        return _buildKey(
-          digit: digit,
-          symbols: symbols,
-          onPressed: () => onKeyPressed(digit),
-        );
-      }),
-      //      _buildConfirmKey(onPressed: () {}),
-       // Пустые места для сохранения структуры сетки
+      decoration: BoxDecoration(
+        color: Colors.grey[200], // Цвет фона
+        borderRadius: BorderRadius.circular(16.r), // Закругление углов
+      ),
+      padding: EdgeInsets.symmetric(
+        horizontal: 24.w,
+        vertical: 16.h,
+      ), // Отступы
+      child: GridView.count(
+        shrinkWrap: true,
+        crossAxisCount: 3,
+        childAspectRatio: 2.6,
+        physics: NeverScrollableScrollPhysics(), // Отключаем скролл
+        //padding: EdgeInsets.zero, // Убираем внутренние отступы GridView
+        crossAxisSpacing: 4,
+        mainAxisSpacing: 6,
+        children: [
+          ...keys.map((key) {
+            final digit = key.keys.first;
+            final symbols = key.values.first;
+            return _buildKey(
+              digit: digit,
+              symbols: symbols,
+              onPressed: () => onKeyPressed(digit),
+            );
+          }),
+          //      _buildConfirmKey(onPressed: () {}),
+          // Пустые места для сохранения структуры сетки
           SizedBox.shrink(),
-_buildKey( // Кнопка 0
+          _buildKey(
+            // Кнопка 0
             digit: '0',
             symbols: '',
             onPressed: () => onKeyPressed('0'),
-          ),      _buildBackspaceKey(onPressed: onBackspacePressed),
-    ],
-  ),
-);
+          ),
+          _buildBackspaceKey(onPressed: onBackspacePressed),
+        ],
+      ),
+    );
   }
 
   Widget _buildKey({
@@ -375,37 +385,37 @@ _buildKey( // Кнопка 0
     //   ),
     // );
     return ElevatedButton(
-    style: ElevatedButton.styleFrom(
-      backgroundColor: Colors.white, // Фон кнопки
-      foregroundColor: Colors.black, // Цвет текста/иконок
-      shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(5.r), // Закругление
-    ),
-    padding: EdgeInsets.all(3.w), // Внутренние отступы
-    elevation: 5, // Тень
-    ),
-    onPressed: onPressed,
-    child: Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Text(
-          digit,
-          style: TextStyle(
-            fontSize: 17.sp,
-            fontWeight: FontWeight.bold,
-            color: Colors.black, // Цвет цифры
-          ),
+      style: ElevatedButton.styleFrom(
+        backgroundColor: Colors.white, // Фон кнопки
+        foregroundColor: Colors.black, // Цвет текста/иконок
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(5.r), // Закругление
         ),
-        if (symbols.isNotEmpty)
+        padding: EdgeInsets.all(3.w), // Внутренние отступы
+        elevation: 2, // Тень
+      ),
+      onPressed: onPressed,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
           Text(
-            symbols,
+            digit,
             style: TextStyle(
-              fontSize: 7.sp,
-              color: Colors.black, // Цвет символов
+              fontSize: 17.sp,
+              fontWeight: FontWeight.bold,
+              color: Colors.black, // Цвет цифры
             ),
           ),
-      ]
-    ),
+          if (symbols.isNotEmpty)
+            Text(
+              symbols,
+              style: TextStyle(
+                fontSize: 7.sp,
+                color: Colors.black, // Цвет символов
+              ),
+            ),
+        ],
+      ),
     );
   }
 
@@ -422,4 +432,66 @@ _buildKey( // Кнопка 0
   //     icon: Icon(Icons.check, size: 28.w, color: Colors.green),
   //   );
   // }
+
+
+
+void _showPasswordDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      barrierDismissible: false, // Чтобы диалог не закрывался при клике вне его
+      builder: (context) => AlertDialog(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(16.0),
+        ),
+        contentPadding: const EdgeInsets.symmetric(
+          horizontal: 24.0,
+          vertical: 20.0,
+        ),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const Text(
+              'Password added',
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            const SizedBox(height: 16),
+            Text(
+              'You have set a password for PDF_File_3456789_234.pdf',
+              style: TextStyle(
+                fontSize: 16,
+                color: Colors.grey[600],
+              ),
+              textAlign: TextAlign.center,
+            ),
+            const SizedBox(height: 24),
+            SizedBox(
+              width: double.infinity,
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.blue,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8.0),
+                  ),
+                  padding: const EdgeInsets.symmetric(vertical: 16),
+                ),
+                onPressed: () => Navigator.pop(context),
+                child: const Text(
+                  'Ok',
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+
 }
