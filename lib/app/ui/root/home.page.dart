@@ -1,3 +1,4 @@
+import 'package:PDF_Flow/app/ui/convert/gallery1.dart';
 import 'package:PDF_Flow/app/ui/files/delete_file.dart';
 import 'package:PDF_Flow/app/ui/files/password_page.dart';
 import 'package:PDF_Flow/app/ui/root/bottomnavigation_pages/convert.page.dart';
@@ -19,14 +20,13 @@ import '../../../gen/assets.gen.dart';
 import '../../../style/style.dart';
 
 class HomePage extends StatefulWidget {
-   HomePage({super.key});
+  HomePage({super.key});
 
   @override
   State<HomePage> createState() => _HomePageState();
 }
 
-
-  class _HomePageState extends State<HomePage> {
+class _HomePageState extends State<HomePage> {
   int _currentIndex = 0;
   late PageController _pageController;
 
@@ -42,24 +42,20 @@ class HomePage extends StatefulWidget {
     super.dispose();
   }
 
-
-// Список страниц
+  // Список страниц
   final List<Widget> _pages = [
     ConvertPage(),
-    //DeleteFilesPage(),
-    FilledFilesPage(), 
+    // DeleteFilesPage(),
     // SearchView(),
+    //FilledFilesPage(),
+GalleryFirstPage(),
     //PasswordPage(),
-    SettingsPage(), 
+    SettingsPage(),
   ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
-      body: IndexedStack(
-        index: _currentIndex,
-        children: _pages,
-      ),
+      body: IndexedStack(index: _currentIndex, children: _pages),
 
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: ColorStyles.Surface,
@@ -89,7 +85,7 @@ class HomePage extends StatefulWidget {
       ),
     );
   }
-  
+
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
