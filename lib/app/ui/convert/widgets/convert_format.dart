@@ -33,21 +33,22 @@ class ConvertOptionSelector extends StatelessWidget {
       ),
       child: Column(
         // mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Text(
             title,
             style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
           ),
           SizedBox(height: 12.h),
-          Row(
+          Wrap(
+            //runAlignment: WrapAlignment.center,
             //mainAxisSize: MainAxisSize.max,
             //spacing: 4.w,
-            // mainAxisSize: MainAxisSize.min,   
+             //mainAxisAlignment: MainAxisAlignment.center,   
             children:     
                 formats.map((format) {
                   return Padding(
-                    padding: EdgeInsets.only(right: 8.w),
+                    padding: EdgeInsets.only(right: 8.w, top: 8.w),
                     child: GestureDetector(
                       onTap: format.onTap,
                       child: Container(
@@ -55,7 +56,7 @@ class ConvertOptionSelector extends StatelessWidget {
                         height: 80,
                         padding: const EdgeInsets.all(8),
                         decoration: BoxDecoration(
-                          color: Colors.grey[200],
+                          color: ColorStyles.Light_gray,
                           borderRadius: BorderRadius.circular(12),
                         ),
                         child: Column(

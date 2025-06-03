@@ -144,7 +144,7 @@ class ConvertPage extends StatelessWidget {
             Icon(
               Icons.insert_drive_file,
               color: ColorStyles.Dark_pink,
-              size: 50,
+              size: 40.r,
             ),
             Text(
               'This will be your recent file conversions',
@@ -173,7 +173,7 @@ class _GridItem extends StatelessWidget {
         borderRadius: BorderRadius.circular(12.r),
         child: InkWell(
           onTap: () {}, // обработчик нажатия
-          borderRadius: BorderRadius.circular(12.r),
+          borderRadius: BorderRadius.circular(8.r),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [

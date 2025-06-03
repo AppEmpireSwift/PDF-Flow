@@ -1,3 +1,4 @@
+import 'package:PDF_Flow/style/color.style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -22,12 +23,12 @@ class ConvertButton extends StatelessWidget {
             onPressed: isEnabled ? onPressed : null,
             style: ElevatedButton.styleFrom(
               minimumSize: Size.fromHeight(56),
-              backgroundColor: isEnabled ? Colors.red : Colors.red.shade100,
+              backgroundColor: isEnabled ? ColorStyles.Red : Colors.red.shade100,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(12.r),
               ),
             ),
-            child: const Text("Convert"),
+            child: const Text("Convert", style: TextStyle(color: ColorStyles.On_Primary),),
           ),
         ),
       ),
