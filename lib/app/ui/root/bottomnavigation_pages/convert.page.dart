@@ -1,3 +1,5 @@
+import 'package:PDF_Flow/app/ui/convert/gallery1.dart';
+import 'package:PDF_Flow/app/ui/convert/widgets/conversion_success.dart';
 import 'package:PDF_Flow/gen/assets.gen.dart';
 import 'package:PDF_Flow/style/color.style.dart';
 import 'package:PDF_Flow/style/text.style.dart';
@@ -82,13 +84,38 @@ class ConvertPage extends StatelessWidget {
                     mainAxisSpacing: 9.h,
                     crossAxisSpacing: 9.w,
                     childAspectRatio: 104 / 80, // РАЗМЕРЫ КНОПОК
-                    children: const [
-                      _GridItem(icon: Icons.camera_alt, label: 'Camera'),
-                      _GridItem(icon: Icons.photo, label: 'Gallery'),
-                      _GridItem(icon: Icons.insert_drive_file, label: 'Files'),
-                      _GridItem(icon: Icons.text_fields, label: 'Text'),
-                      _GridItem(icon: Icons.link, label: 'Link'),
-                      _GridItem(icon: Icons.input, label: 'Import'),
+                    children: [
+                      _GridItem(
+                        icon: Icons.camera_alt,
+                        label: 'Camera',
+                        onTap: () {},
+                      ),
+                      _GridItem(
+                        icon: Icons.photo,
+                        label: 'Gallery',
+                        onTap:
+                            () => Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) => GalleryFirstPage(),
+                              ),
+                            ),
+                      ),
+                      _GridItem(
+                        icon: Icons.insert_drive_file,
+                        label: 'Files',
+                        onTap: () {},
+                      ),
+                      _GridItem(
+                        icon: Icons.text_fields,
+                        label: 'Text',
+                        onTap: () {},
+                      ),
+                      _GridItem(icon: Icons.link, label: 'Link', onTap: () {}),
+                      _GridItem(
+                        icon: Icons.input,
+                        label: 'Import',
+                        onTap: () {},
+                      ),
                     ],
                   ),
                 ],
@@ -160,8 +187,13 @@ class ConvertPage extends StatelessWidget {
 class _GridItem extends StatelessWidget {
   final IconData icon;
   final String label;
+  final VoidCallback onTap;
 
-  const _GridItem({required this.icon, required this.label});
+  const _GridItem({
+    required this.icon,
+    required this.label,
+    required this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -172,7 +204,7 @@ class _GridItem extends StatelessWidget {
         color: const Color(0xFFFFEBEB),
         borderRadius: BorderRadius.circular(12.r),
         child: InkWell(
-          onTap: () {}, // обработчик нажатия
+          onTap: onTap, // обработчик нажатия
           borderRadius: BorderRadius.circular(8.r),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,

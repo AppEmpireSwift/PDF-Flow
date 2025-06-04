@@ -48,9 +48,9 @@ class _HomePageState extends State<HomePage> {
     // DeleteFilesPage(),
     // SearchView(),
     //FilledFilesPage(),
-GalleryFirstPage(),
-    //PasswordPage(),
-    SettingsPage(),
+    GalleryFirstPage(),
+    PasswordPage(),
+    // SettingsPage(),
   ];
   @override
   Widget build(BuildContext context) {

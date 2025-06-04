@@ -1,8 +1,9 @@
 import 'package:PDF_Flow/app/ui/convert/widgets/appbar.dart';
+import 'package:PDF_Flow/app/ui/convert/widgets/conversion_success.dart';
 import 'package:PDF_Flow/app/ui/convert/widgets/convert_button.dart';
 import 'package:PDF_Flow/app/ui/convert/widgets/convert_format.dart';
 import 'package:PDF_Flow/app/ui/convert/widgets/selectable_file.dart';
-import 'package:PDF_Flow/app/ui/settings/widgets/search_field.dart';
+import 'package:PDF_Flow/app/ui/convert/widgets/text_field.dart';
 import 'package:PDF_Flow/style/color.style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -45,42 +46,25 @@ class GalleryFirstPage extends StatelessWidget {
     ];
 
     return Scaffold(
-      appBar: const CustomAppBar(title: 'Мой экран'),
+      appBar: const CustomAppBar(title: 'Convert from gallery', backgroundColor: ColorStyles.Background,),
       body: Container(
         color: ColorStyles.Background,
         // child: Padding (margin
         child: Container(
-          margin: EdgeInsets.all(10.r),
+          //margin: EdgeInsets.all(10.r),
           child: Column(
             //mainAxisAlignment: MainAxisAlignment.center,
             // crossAxisAlignment: CrossAxisAlignment.center, // ← Добавьте это
             children: [
-              SelectableFileWidget(
-                onTap: () {},
-                head: 'Files',
-                text: 'Click here for photo selection',
-              ),
-              ConvertOptionSelector(title: 'Convert to', formats: formats),
-              ConvertButton(isEnabled: true, onPressed: () {}),
-              SizedBox(
-                width: double.infinity,
-                height: 56.h,
-                child: TextField(
-                  style: TextStyle(
-                    fontSize: 16.sp,
-                  ),
-                  decoration: InputDecoration(
-                    hintText: 'Enter your text here',
-                    filled: true,
-                    fillColor: ColorStyles.Surface,
-                    contentPadding: EdgeInsets.all(12),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12),
-                      borderSide: BorderSide.none,
-                    ),
-                  ),
-                ),
-              ),
+              // SelectableFileWidget(
+              //   onTap: () {},
+              //   head: 'Files',
+              //   text: 'Click here for photo selection',
+              // ),
+              // ConvertOptionSelector(title: 'Convert to', formats: formats),
+              // ConvertButton(isEnabled: true, onPressed: () {}),
+              // TextInputWidget(onTap: (){},  head: 'Text', text: 'Enter your text here')
+              ConversionSuccess(),
             ],
           ),
         ),
