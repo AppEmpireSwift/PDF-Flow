@@ -46,23 +46,34 @@ class GalleryFirstPage extends StatelessWidget {
     ];
 
     return Scaffold(
-      appBar: const CustomAppBar(title: 'Convert from gallery', backgroundColor: ColorStyles.Background,),
+      appBar: const CustomAppBar(
+        title: 'Convert from gallery',
+        backgroundColor: ColorStyles.Background,
+      ),
       body: Container(
         color: ColorStyles.Background,
         // child: Padding (margin
         child: Container(
-          //margin: EdgeInsets.all(10.r),
+          margin: EdgeInsets.all(10.r),
           child: Column(
             //mainAxisAlignment: MainAxisAlignment.center,
-            // crossAxisAlignment: CrossAxisAlignment.center, // ← Добавьте это
+            crossAxisAlignment: CrossAxisAlignment.center, // ← Добавьте это
             children: [
-              // SelectableFileWidget(
-              //   onTap: () {},
-              //   head: 'Files',
-              //   text: 'Click here for photo selection',
-              // ),
-               ConvertOptionSelector(title: 'Convert to', initialFormats: formats),
-               ConvertButton(isEnabled: true, onPressed: () {}),
+              SelectableFileWidget(
+                onTap: (){},
+                head: 'Files',
+                text: 'Click here for photo selection',
+              ),
+              ConvertOptionSelector(
+                title: 'Convert to',
+                initialFormats: formats,
+              ),
+              Spacer(), // ← Добавьте это
+
+              Align(
+                alignment: Alignment.bottomCenter,
+                child: ConvertButton(isEnabled: true, onPressed: () {}),
+              ),
               // TextInputWidget(onTap: (){},  head: 'Text', text: 'Enter your text here')
               // ConversionSuccess(),
             ],
