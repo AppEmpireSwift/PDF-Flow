@@ -9,14 +9,14 @@ import 'package:PDF_Flow/style/color.style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class LinkPage extends StatefulWidget {
-  const LinkPage({Key? key}) : super(key: key);
+class TextConvertPage extends StatefulWidget {
+  const TextConvertPage({Key? key}) : super(key: key);
 
   @override
-  State<LinkPage> createState() => _GalleryFirstPageState();
+  State<TextConvertPage> createState() => _TextConvertPageState();
 }
 
-class _GalleryFirstPageState extends State<LinkPage> {
+class _TextConvertPageState extends State<TextConvertPage> {
   bool isLoading = false;
   bool showSuccess = false;
 
@@ -73,7 +73,7 @@ class _GalleryFirstPageState extends State<LinkPage> {
 
     return Scaffold(
       appBar: const CustomAppBar(
-        title: 'Convert link',
+        title: 'Convert text',
         backgroundColor: ColorStyles.Background,
       ),
       body: LoadingOverlay(
@@ -97,7 +97,7 @@ class _GalleryFirstPageState extends State<LinkPage> {
                         //   text: 'Click here for photo selection',
                         //   onAddFile: () {},
                         // ),
-                        TextInputWidget(head: 'Link', text: 'Enter link here'),
+                        TextInputWidget(head: 'Text', text: 'Enter text here', expands: true,),
 
                         ConvertOptionSelector(
                           title: 'Convert to',
