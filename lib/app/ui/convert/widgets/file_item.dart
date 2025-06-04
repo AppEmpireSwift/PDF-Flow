@@ -1,10 +1,11 @@
 import 'package:PDF_Flow/style/style.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class FileItem extends StatefulWidget {
   final String fileName;
-  
+
   const FileItem({Key? key, required this.fileName}) : super(key: key);
 
   @override
@@ -23,40 +24,67 @@ class _FileItemState extends State<FileItem> {
     _textController.text = _currentFileName;
   }
 
+  void _showCupertinoRenameDialog(BuildContext context) {
+    final dialogController = TextEditingController(text: _currentFileName);
 
-
-  //final TextEditingController controller = TextEditingController(text: widget.fileName);
-  void _showCupertinoDeleteDialog(BuildContext context) {
     showCupertinoDialog(
       context: context,
       builder: (context) {
         return CupertinoAlertDialog(
-          title: Column(
-            children: [
-              SizedBox(height: 12),
-              Text('Rename'),
-            ],
-          ),
+          title: Column(children: [SizedBox(height: 12), Text('Rename')]),
           content: Padding(
             padding: const EdgeInsets.only(top: 8.0),
-            child: CupertinoTextField(
-          //controller: controller,
-          autofocus: true,
-          placeholder: "Введите новое имя",
-        ),
+            child: Column(
+              children: [
+                Text('Enter a name for the file'),
+                SizedBox(height: 12.h),
+                CupertinoTextField(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10.r),
+                    color: Color(0x1F767680), 
+                  ),
+                  controller: dialogController,
+                  autofocus: true,
+                  placeholder: "Enter title",
 
+                  // Добавляем иконку очистки
+  suffix: GestureDetector(
+    onTap: () {
+      dialogController.clear(); // Очищаем поле
+    },
+    child: Padding(
+      padding: EdgeInsets.only(right: 8.0),
+      child: Icon(
+        CupertinoIcons.clear_thick_circled,
+        color: CupertinoColors.placeholderText,
+        size: 18,
+      ),
+    ),
+  ),
+
+                ),
+              ],
+            ),
           ),
           actions: [
             CupertinoDialogAction(
-              child: Text('Cancel', style: TextStyle(color: ColorStyles.Grey),),
+              child: Text('Cancel', style: TextStyle(color: ColorStyles.Grey)),
               onPressed: () => Navigator.of(context).pop(),
             ),
             CupertinoDialogAction(
-              //isDestructiveAction: true,
-              child: Text('Save', style: TextStyle(color: ColorStyles.On_surface),),
+              child: Text(
+                'Save',
+                style: TextStyle(color: ColorStyles.On_surface),
+              ),
               onPressed: () {
+                final newName = dialogController.text.trim();
+                if (newName.isNotEmpty) {
+                  setState(() {
+                    _currentFileName = newName;
+                    _textController.text = newName;
+                  });
+                }
                 Navigator.of(context).pop();
-                // Add deletion logic here
               },
             ),
           ],
@@ -64,6 +92,46 @@ class _FileItemState extends State<FileItem> {
       },
     );
   }
+  // void _showCupertinoDeleteDialog(BuildContext context) {
+  //   showCupertinoDialog(
+  //     context: context,
+  //     builder: (context) {
+  //       return CupertinoAlertDialog(
+  //         title: Column(
+  //           children: [
+  //             Icon(CupertinoIcons.delete_solid, size: 40, color: ColorStyles.On_surface),
+  //             SizedBox(height: 12),
+  //             Text('Rename'),
+  //           ],
+  //         ),
+  //         content: Padding(
+  //           padding: const EdgeInsets.only(top: 8.0),
+  //           child: CupertinoTextField(
+  //             decoration: BoxDecoration(borderRadius: BorderRadius.circular(10.r)),
+  //         controller: controller,
+  //         autofocus: true,
+  //         placeholder: "Введите новое имя",
+  //       ),
+
+  //         ),
+  //         actions: [
+  //           CupertinoDialogAction(
+  //             child: Text('Cancel', style: TextStyle(color: ColorStyles.Grey),),
+  //             onPressed: () => Navigator.of(context).pop(),
+  //           ),
+  //           CupertinoDialogAction(
+  //             //isDestructiveAction: true,
+  //             child: Text('Save', style: TextStyle(color: ColorStyles.On_surface),),
+  //             onPressed: () {
+  //               Navigator.of(context).pop();
+  //               // Add deletion logic here
+  //             },
+  //           ),
+  //         ],
+  //       );
+  //     },
+  //   );
+  // }
 
   @override
   void dispose() {
@@ -104,31 +172,29 @@ class _FileItemState extends State<FileItem> {
           // Иконка файла
           Icon(Icons.insert_drive_file, size: 24, color: Colors.grey.shade700),
           const SizedBox(width: 4),
-          
+
           // Название файла или поле редактирования
           Expanded(
-            child: _isEditing
-                ? TextField(
-                    controller: _textController,
-                    decoration: InputDecoration(
-                      isDense: true,
-                      contentPadding: EdgeInsets.zero,
-                      border: InputBorder.none,
-                    ),
-                    autofocus: true,
-                    onSubmitted: (_) => _saveEditing(),
-                  )
-                : Text(
-                    _currentFileName,
-                    style: TextStyle(fontSize: 16),
-                  ),
+            child:
+                _isEditing
+                    ? TextField(
+                      controller: _textController,
+                      decoration: InputDecoration(
+                        isDense: true,
+                        contentPadding: EdgeInsets.zero,
+                        border: InputBorder.none,
+                      ),
+                      autofocus: true,
+                      onSubmitted: (_) => _saveEditing(),
+                    )
+                    : Text(_currentFileName, style: TextStyle(fontSize: 16)),
           ),
-          
+
           // Иконка редактирования или кнопки сохранения/отмены
           if (!_isEditing)
             IconButton(
               icon: Icon(Icons.edit, size: 20),
-              onPressed: () => _showCupertinoDeleteDialog(context),
+              onPressed: () => _showCupertinoRenameDialog(context),
               padding: EdgeInsets.zero,
               constraints: BoxConstraints(),
             )

@@ -1,3 +1,4 @@
+import 'package:PDF_Flow/style/color.style.dart';
 import 'package:flutter/material.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -17,23 +18,12 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       backgroundColor: backgroundColor,
-  //     leading: IconButton(
-  //   icon: Row(
-  //     mainAxisSize: MainAxisSize.min,
-  //     children: [
-  //       const Icon(Icons.arrow_back_ios_new, size: 16),
-  //       const SizedBox(width: 4),
-  //       const Text('Back', style: TextStyle(fontSize: 10)),
-  //     ],
-  //   ),
-  //   onPressed: onBack ?? () => Navigator.of(context).pop(),
-  // ),
   leading: IconButton(
   icon: Row(
     mainAxisSize: MainAxisSize.min,
     children: [
-      const Icon(Icons.arrow_back_ios_new, size: 17), // Уменьшить иконку
-      const Text('Back', style: TextStyle(fontSize: 17)), // Уменьшить текст
+      const Icon(Icons.arrow_back_ios_new, size: 17, color: ColorStyles.Red), 
+      const Text('Back', style: TextStyle(fontSize: 16)), 
     ],
   ),
   padding: EdgeInsets.zero, // Убрать внутренние отступы
