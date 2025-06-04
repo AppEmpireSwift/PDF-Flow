@@ -92,47 +92,7 @@ class _FileItemState extends State<FileItem> {
       },
     );
   }
-  // void _showCupertinoDeleteDialog(BuildContext context) {
-  //   showCupertinoDialog(
-  //     context: context,
-  //     builder: (context) {
-  //       return CupertinoAlertDialog(
-  //         title: Column(
-  //           children: [
-  //             Icon(CupertinoIcons.delete_solid, size: 40, color: ColorStyles.On_surface),
-  //             SizedBox(height: 12),
-  //             Text('Rename'),
-  //           ],
-  //         ),
-  //         content: Padding(
-  //           padding: const EdgeInsets.only(top: 8.0),
-  //           child: CupertinoTextField(
-  //             decoration: BoxDecoration(borderRadius: BorderRadius.circular(10.r)),
-  //         controller: controller,
-  //         autofocus: true,
-  //         placeholder: "Введите новое имя",
-  //       ),
-
-  //         ),
-  //         actions: [
-  //           CupertinoDialogAction(
-  //             child: Text('Cancel', style: TextStyle(color: ColorStyles.Grey),),
-  //             onPressed: () => Navigator.of(context).pop(),
-  //           ),
-  //           CupertinoDialogAction(
-  //             //isDestructiveAction: true,
-  //             child: Text('Save', style: TextStyle(color: ColorStyles.On_surface),),
-  //             onPressed: () {
-  //               Navigator.of(context).pop();
-  //               // Add deletion logic here
-  //             },
-  //           ),
-  //         ],
-  //       );
-  //     },
-  //   );
-  // }
-
+  
   @override
   void dispose() {
     _textController.dispose();

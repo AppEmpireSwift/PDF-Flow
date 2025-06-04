@@ -61,10 +61,10 @@ class GalleryFirstPage extends StatelessWidget {
               //   head: 'Files',
               //   text: 'Click here for photo selection',
               // ),
-              // ConvertOptionSelector(title: 'Convert to', formats: formats),
-              // ConvertButton(isEnabled: true, onPressed: () {}),
+               ConvertOptionSelector(title: 'Convert to', initialFormats: formats),
+               ConvertButton(isEnabled: true, onPressed: () {}),
               // TextInputWidget(onTap: (){},  head: 'Text', text: 'Enter your text here')
-              ConversionSuccess(),
+              // ConversionSuccess(),
             ],
           ),
         ),

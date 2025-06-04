@@ -47,8 +47,8 @@ class _HomePageState extends State<HomePage> {
     ConvertPage(),
     // DeleteFilesPage(),
     // SearchView(),
-    //FilledFilesPage(),
-    GalleryFirstPage(),
+    FilledFilesPage(),
+    //GalleryFirstPage(),
     PasswordPage(),
     // SettingsPage(),
   ];
