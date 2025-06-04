@@ -1,3 +1,5 @@
+import 'package:PDF_Flow/style/style.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class FileItem extends StatefulWidget {
@@ -19,6 +21,48 @@ class _FileItemState extends State<FileItem> {
     super.initState();
     _currentFileName = widget.fileName;
     _textController.text = _currentFileName;
+  }
+
+
+
+  //final TextEditingController controller = TextEditingController(text: widget.fileName);
+  void _showCupertinoDeleteDialog(BuildContext context) {
+    showCupertinoDialog(
+      context: context,
+      builder: (context) {
+        return CupertinoAlertDialog(
+          title: Column(
+            children: [
+              SizedBox(height: 12),
+              Text('Rename'),
+            ],
+          ),
+          content: Padding(
+            padding: const EdgeInsets.only(top: 8.0),
+            child: CupertinoTextField(
+          //controller: controller,
+          autofocus: true,
+          placeholder: "Введите новое имя",
+        ),
+
+          ),
+          actions: [
+            CupertinoDialogAction(
+              child: Text('Cancel', style: TextStyle(color: ColorStyles.Grey),),
+              onPressed: () => Navigator.of(context).pop(),
+            ),
+            CupertinoDialogAction(
+              //isDestructiveAction: true,
+              child: Text('Save', style: TextStyle(color: ColorStyles.On_surface),),
+              onPressed: () {
+                Navigator.of(context).pop();
+                // Add deletion logic here
+              },
+            ),
+          ],
+        );
+      },
+    );
   }
 
   @override
@@ -84,7 +128,7 @@ class _FileItemState extends State<FileItem> {
           if (!_isEditing)
             IconButton(
               icon: Icon(Icons.edit, size: 20),
-              onPressed: _startEditing,
+              onPressed: () => _showCupertinoDeleteDialog(context),
               padding: EdgeInsets.zero,
               constraints: BoxConstraints(),
             )

@@ -16,29 +16,30 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      // leading: Row(
-      //   mainAxisSize: MainAxisSize.min,
-      //    children: [
-      //   IconButton(
-      //   icon: const Icon(Icons.arrow_back_ios_new, size: 10), // Иконка "<"
-      //   padding: EdgeInsets.zero, // Убираем внутренние отступы
-      //   onPressed: onBack ?? () => Navigator.of(context).pop(),
-      //   ),
-      //   Text('Back', style: TextStyle(fontSize: 14))
-      //   ]
-      // ),
       backgroundColor: backgroundColor,
-      leading: IconButton(
-    icon: Row(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        const Icon(Icons.arrow_back_ios_new, size: 16),
-        const SizedBox(width: 4),
-        const Text('Back', style: TextStyle(fontSize: 10)),
-      ],
-    ),
-    onPressed: onBack ?? () => Navigator.of(context).pop(),
+  //     leading: IconButton(
+  //   icon: Row(
+  //     mainAxisSize: MainAxisSize.min,
+  //     children: [
+  //       const Icon(Icons.arrow_back_ios_new, size: 16),
+  //       const SizedBox(width: 4),
+  //       const Text('Back', style: TextStyle(fontSize: 10)),
+  //     ],
+  //   ),
+  //   onPressed: onBack ?? () => Navigator.of(context).pop(),
+  // ),
+  leading: IconButton(
+  icon: Row(
+    mainAxisSize: MainAxisSize.min,
+    children: [
+      const Icon(Icons.arrow_back_ios_new, size: 17), // Уменьшить иконку
+      const Text('Back', style: TextStyle(fontSize: 17)), // Уменьшить текст
+    ],
   ),
+  padding: EdgeInsets.zero, // Убрать внутренние отступы
+  constraints: const BoxConstraints(), // Убрать ограничения по умолчанию
+  onPressed: onBack ?? () => Navigator.of(context).pop(),
+),
       title: Text(title),
       centerTitle: true,
       //elevation: 100,
