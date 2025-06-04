@@ -159,44 +159,42 @@ class _GalleryFirstPageState extends State<GalleryFirstPage> {
       //   backgroundColor: ColorStyles.Background,
       // ),
       body: LoadingOverlay(
-    isLoading: isLoading,
-    child: 
-          Container(
-            color: ColorStyles.Background,
-            child: Container(
-              margin: EdgeInsets.only(left: 10.w, right: 10.w, bottom: 10.w),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
+        isLoading: isLoading,
+        child: Container(
+          color: ColorStyles.Background,
+          child: Container(
+            margin: EdgeInsets.only(left: 10.w, right: 10.w, bottom: 10.w),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                const CustomAppBar(
+                  title: 'Convert from gallery',
+                  backgroundColor: ColorStyles.Background,
+                ),
 
-const CustomAppBar(
-        title: 'Convert from gallery',
-        backgroundColor: ColorStyles.Background,
-      ),
-                  
-                  SelectableFileWidget(
-                    onTap: () {
-                      // TODO: выбор файла
-                    },
-                    head: 'Files',
-                    text: 'Click here for photo selection',
+                SelectableFileWidget(
+                  head: 'Files',
+                  text: 'Click here for photo selection',
+                  onAddFile: () {
+                    // здесь можно вызывать image_picker или file_picker
+                  },
+                ),
+                ConvertOptionSelector(
+                  title: 'Convert to',
+                  initialFormats: formats,
+                ),
+                const Spacer(),
+                Align(
+                  alignment: Alignment.bottomCenter,
+                  child: ConvertButton(
+                    isEnabled: true,
+                    onPressed: _startConversion,
                   ),
-                  ConvertOptionSelector(
-                    title: 'Convert to',
-                    initialFormats: formats,
-                  ),
-                  const Spacer(),
-                  Align(
-                    alignment: Alignment.bottomCenter,
-                    child: ConvertButton(
-                      isEnabled: true,
-                      onPressed: _startConversion,
-                    ),
-                  ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
+        ),
       ),
     );
   }

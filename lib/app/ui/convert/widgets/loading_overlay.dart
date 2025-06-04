@@ -6,11 +6,8 @@ class LoadingOverlay extends StatelessWidget {
   final bool isLoading;
   final Widget child;
 
-  const LoadingOverlay({
-    Key? key,
-    required this.isLoading,
-    required this.child,
-  }) : super(key: key);
+  const LoadingOverlay({Key? key, required this.isLoading, required this.child})
+    : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -26,15 +23,14 @@ class LoadingOverlay extends StatelessWidget {
               child: Container(
                 color: Colors.black.withOpacity(0.2),
                 alignment: Alignment.center,
-                child: Column( mainAxisAlignment: MainAxisAlignment.center, children:[  const Icon(
-                  Icons.sync,
-                  color: Colors.white,
-                  size: 64,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Icon(Icons.sync, color: Colors.white, size: 64),
+                    SizedBox(height: 12.h),
+                    Text('Converted...'),
+                  ],
                 ),
-                SizedBox(height: 12.h),
-                Text('Converted...'),
-                ]
-              ),
               ),
             ),
           ),
