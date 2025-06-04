@@ -5,13 +5,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
 class TextInputWidget extends StatelessWidget {
-  final VoidCallback onTap;
+  //final VoidCallback onTap;
   final String head;
   final String text;
 
   const TextInputWidget({
     super.key,
-    required this.onTap,
+    //required this.onTap,
     required this.head,
     required this.text,
   });
@@ -21,7 +21,7 @@ class TextInputWidget extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(head),
+        Padding(padding: EdgeInsets.only(left: 15.w), child: Text(head)),
         SizedBox(height: 4.h),
         SizedBox(
           width: double.infinity,

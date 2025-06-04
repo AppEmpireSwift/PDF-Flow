@@ -1,4 +1,4 @@
-import 'package:PDF_Flow/app/ui/convert/gallery1.dart';
+import 'package:PDF_Flow/app/ui/convert/gallery.dart';
 import 'package:PDF_Flow/app/ui/files/delete_file.dart';
 import 'package:PDF_Flow/app/ui/files/password_page.dart';
 import 'package:PDF_Flow/app/ui/root/bottomnavigation_pages/convert.page.dart';

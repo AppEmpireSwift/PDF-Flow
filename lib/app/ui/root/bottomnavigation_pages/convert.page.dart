@@ -1,4 +1,5 @@
-import 'package:PDF_Flow/app/ui/convert/gallery1.dart';
+import 'package:PDF_Flow/app/ui/convert/Link.dart';
+import 'package:PDF_Flow/app/ui/convert/gallery.dart';
 import 'package:PDF_Flow/app/ui/convert/widgets/conversion_success.dart';
 import 'package:PDF_Flow/gen/assets.gen.dart';
 import 'package:PDF_Flow/style/color.style.dart';
@@ -110,7 +111,16 @@ class ConvertPage extends StatelessWidget {
                         label: 'Text',
                         onTap: () {},
                       ),
-                      _GridItem(icon: Icons.link, label: 'Link', onTap: () {}),
+                      _GridItem(
+                        icon: Icons.link,
+                        label: 'Link',
+                        onTap:
+                                () => Navigator.of(context).push(
+                                  MaterialPageRoute(
+                                    builder: (context) => LinkPage(),
+                                  ),
+                                ),
+                      ),
                       _GridItem(
                         icon: Icons.input,
                         label: 'Import',
