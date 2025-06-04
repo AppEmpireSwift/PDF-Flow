@@ -73,9 +73,9 @@ class _ConvertOptionSelectorState extends State<ConvertOptionSelector> {
     return Container(
       width: double.infinity,
       margin: EdgeInsets.symmetric(horizontal: 8, vertical: 8),
-      padding: EdgeInsets.all(10.r),
+      padding: EdgeInsets.all(6.r),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: ColorStyles.Surface,
         borderRadius: BorderRadius.circular(12.r),
       ),
       child: Column(
@@ -90,6 +90,7 @@ class _ConvertOptionSelectorState extends State<ConvertOptionSelector> {
           ),
           SizedBox(height: 12.h),
           Wrap(
+            //alignment:WrapAlignment.center,
             children:
                 formats.asMap().entries.map((entry) {
                   final index = entry.key;

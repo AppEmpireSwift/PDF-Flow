@@ -73,7 +73,7 @@ class _GalleryFirstPageState extends State<LinkPage> {
 
     return Scaffold(
       appBar: const CustomAppBar(
-        title: 'Convert from gallery',
+        title: 'Convert link',
         backgroundColor: ColorStyles.Background,
       ),
       body: LoadingOverlay(
@@ -97,7 +97,7 @@ class _GalleryFirstPageState extends State<LinkPage> {
                         //   text: 'Click here for photo selection',
                         //   onAddFile: () {},
                         // ),
-                        TextInputWidget(head: 'Link', text: 'Enter link here'),
+                        TextInputWidget(head: 'Link', text: 'Enter link here', expands: true,),
 
                         ConvertOptionSelector(
                           title: 'Convert to',
