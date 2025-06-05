@@ -1,7 +1,7 @@
-import 'package:PDF_Flow/app/ui/convert/gallery.dart';
+import 'package:PDF_Flow/app/ui/convert/convert_pages/gallery.dart';
 import 'package:PDF_Flow/app/ui/files/delete_file.dart';
 import 'package:PDF_Flow/app/ui/files/password_page.dart';
-import 'package:PDF_Flow/app/ui/root/bottomnavigation_pages/convert.page.dart';
+import 'package:PDF_Flow/app/ui/convert/convert.page.dart';
 import 'package:PDF_Flow/app/ui/files/files.page.dart';
 import 'package:PDF_Flow/app/ui/files/filled_file.page.dart';
 import 'package:PDF_Flow/app/ui/files/searching_page.dart';
@@ -49,8 +49,8 @@ class _HomePageState extends State<HomePage> {
     // SearchView(),
     FilledFilesPage(),
     //GalleryFirstPage(),
-    PasswordPage(),
-    // SettingsPage(),
+    //PasswordPage(),
+     SettingsPage(),
   ];
   @override
   Widget build(BuildContext context) {

@@ -1,3 +1,4 @@
+import 'package:PDF_Flow/app/ui/convert/widgets/appbar.dart';
 import 'package:PDF_Flow/app/ui/root/home.page.dart';
 import 'package:PDF_Flow/style/style.dart';
 import 'package:flutter/material.dart';
@@ -26,48 +27,63 @@ class PasswordPageState extends State<PasswordPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
+      appBar: CustomAppBar(
+        title: 'Password',
         backgroundColor: ColorStyles.Background,
-        leading: TextButton(
-          onPressed: () {
-            setState(() {
-              (currentState > 1)
-                  ? currentState--
-                  : Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (context) => HomePage(), // Ваша целевая страница
-                    ),
-                  );
-            });
-          },
-          style: TextButton.styleFrom(
-            padding: EdgeInsets.only(left: 16.w), // Отступ слева
-            tapTargetSize:
-                MaterialTapTargetSize.shrinkWrap, // Уменьшает область нажатия
-          ),
-          child: Row(
-            mainAxisSize:
-                MainAxisSize.min, // Чтобы Row занимал только нужное место
-            children: [
-              Icon(Icons.arrow_back, size: 10.w), // Иконка
-              SizedBox(width: 15.w), // Отступ между иконкой и текстом
-              Text(
-                'Back',
-                style: TextStyle(
-                  fontSize: 8.sp,
-                  //color: Theme.of(context).appBarTheme.actionsIconTheme?.color, // Цвет как у иконок
-                ),
-              ),
-            ],
-          ),
-        ),
-        title: Text('Create password'),
-        // currentState == 6
-        //     ? null
-        //     : Text(currentState == 1
-        //         ? 'Создать пароль'
-        //         : 'Повторите пароль'),
+        onBack: () {
+          setState(() {
+            (currentState > 1)
+                ? currentState--
+                : Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => HomePage(), // Ваша целевая страница
+                  ),
+                );
+          });
+        },
       ),
+      // AppBar(
+      //   backgroundColor: ColorStyles.Background,
+      //   leading: TextButton(
+      // onPressed: () {
+      //   setState(() {
+      //     (currentState > 1)
+      //         ? currentState--
+      //         : Navigator.of(context).push(
+      //           MaterialPageRoute(
+      //             builder: (context) => HomePage(), // Ваша целевая страница
+      //           ),
+      //         );
+      //   });
+      //     },
+      //     style: TextButton.styleFrom(
+      //       padding: EdgeInsets.only(left: 16.w), // Отступ слева
+      //       tapTargetSize:
+      //           MaterialTapTargetSize.shrinkWrap, // Уменьшает область нажатия
+      //     ),
+      //     child: Row(
+      //       mainAxisSize:
+      //           MainAxisSize.min, // Чтобы Row занимал только нужное место
+      //       children: [
+      //         Icon(Icons.arrow_back, size: 10.w), // Иконка
+      //         SizedBox(width: 15.w), // Отступ между иконкой и текстом
+      //         Text(
+      //           'Back',
+      //           style: TextStyle(
+      //             fontSize: 8.sp,
+      //             //color: Theme.of(context).appBarTheme.actionsIconTheme?.color, // Цвет как у иконок
+      //           ),
+      //         ),
+      //       ],
+      //     ),
+      //   ),
+      //   title: Text('Create password'),
+      //   // currentState == 6
+      //   //     ? null
+      //   //     : Text(currentState == 1
+      //   //         ? 'Создать пароль'
+      //   //         : 'Повторите пароль'),
+      // ),
       body: Container(color: ColorStyles.Background, child: _buildBody()),
     );
   }
@@ -144,10 +160,15 @@ class PasswordPageState extends State<PasswordPage> {
                     // setState(() {
                     //   currentState = currentState == 1 ? 3 : 5;
                     // });
-                    currentState == 1 ? setState(() {
-                      currentState = 3;
-                    })  : _showPasswordDialog(context, 'Password changed', 'You changed the password for PDF_File_3456789_234.pdf ');
-                    
+                    currentState == 1
+                        ? setState(() {
+                          currentState = 3;
+                        })
+                        : _showPasswordDialog(
+                          context,
+                          'Password changed',
+                          'You changed the password for PDF_File_3456789_234.pdf ',
+                        );
                   });
                 }
               }
@@ -433,65 +454,58 @@ class PasswordPageState extends State<PasswordPage> {
   //   );
   // }
 
-
-//Плашка успешного завершениякакого-либо этапа.
-void _showPasswordDialog(BuildContext context, String title, String description) {
+  //Плашка успешного завершениякакого-либо этапа.
+  void _showPasswordDialog(
+    BuildContext context,
+    String title,
+    String description,
+  ) {
     showDialog(
       context: context,
       barrierDismissible: false, // Чтобы диалог не закрывался при клике вне его
-      builder: (context) => AlertDialog(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(16.0),
-        ),
-        contentPadding: const EdgeInsets.symmetric(
-          horizontal: 24.0,
-          vertical: 20.0,
-        ),
-        content: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-             Text(
-              title,
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              ),
+      builder:
+          (context) => AlertDialog(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(16.0),
             ),
-            const SizedBox(height: 16),
-            Text(
-              description,
-              style: TextStyle(
-                fontSize: 16,
-                color: Colors.grey[600],
-              ),
-              textAlign: TextAlign.center,
+            contentPadding: const EdgeInsets.symmetric(
+              horizontal: 24.0,
+              vertical: 20.0,
             ),
-            const SizedBox(height: 24),
-            SizedBox(
-              width: double.infinity,
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.blue,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8.0),
-                  ),
-                  padding: const EdgeInsets.symmetric(vertical: 16),
+            content: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(
+                  title,
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 ),
-                onPressed: () => Navigator.pop(context),
-                child: const Text(
-                  'Ok',
-                  style: TextStyle(
-                    fontSize: 16,
-                    color: Colors.white,
+                const SizedBox(height: 16),
+                Text(
+                  description,
+                  style: TextStyle(fontSize: 16, color: Colors.grey[600]),
+                  textAlign: TextAlign.center,
+                ),
+                const SizedBox(height: 24),
+                SizedBox(
+                  width: double.infinity,
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.blue,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
+                      padding: const EdgeInsets.symmetric(vertical: 16),
+                    ),
+                    onPressed: () => Navigator.pop(context),
+                    child: const Text(
+                      'Ok',
+                      style: TextStyle(fontSize: 16, color: Colors.white),
+                    ),
                   ),
                 ),
-              ),
+              ],
             ),
-          ],
-        ),
-      ),
+          ),
     );
   }
-
-
 }

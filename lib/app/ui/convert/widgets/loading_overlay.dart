@@ -1,4 +1,5 @@
 import 'dart:ui';
+import 'package:PDF_Flow/style/style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -28,7 +29,9 @@ class LoadingOverlay extends StatelessWidget {
                   children: [
                     const Icon(Icons.sync, color: Colors.white, size: 64),
                     SizedBox(height: 12.h),
-                    Text('Converted...'),
+                    Text('Converted...', style: TextStyle(color: ColorStyles.Black, fontSize: 16),                       overflow: TextOverflow.visible, // или TextOverflow.clip
+),
+
                   ],
                 ),
               ),

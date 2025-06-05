@@ -23,7 +23,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     mainAxisSize: MainAxisSize.min,
     children: [
       const Icon(Icons.arrow_back_ios_new, size: 17, color: ColorStyles.Red), 
-      const Text('Back', style: TextStyle(fontSize: 16)), 
+      const Text('Back', style: TextStyle(fontSize: 16, color: ColorStyles.Red)), 
     ],
   ),
   padding: EdgeInsets.zero, // Убрать внутренние отступы

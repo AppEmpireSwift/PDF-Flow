@@ -1,6 +1,8 @@
-import 'package:PDF_Flow/app/ui/convert/Link.dart';
-import 'package:PDF_Flow/app/ui/convert/gallery.dart';
-import 'package:PDF_Flow/app/ui/convert/text_convert.dart';
+import 'package:PDF_Flow/app/ui/convert/convert_pages/files_convert.dart';
+import 'package:PDF_Flow/app/ui/convert/convert_pages/import_convert.dart';
+import 'package:PDF_Flow/app/ui/convert/link.dart';
+import 'package:PDF_Flow/app/ui/convert/convert_pages/gallery.dart';
+import 'package:PDF_Flow/app/ui/convert/convert_pages/text_convert.dart';
 import 'package:PDF_Flow/app/ui/convert/widgets/conversion_success.dart';
 import 'package:PDF_Flow/gen/assets.gen.dart';
 import 'package:PDF_Flow/style/color.style.dart';
@@ -38,7 +40,7 @@ class ConvertPage extends StatelessWidget {
         ),
       ),
       body: Container(
-        color: Colors.red[50],
+        color: ColorStyles.Pink,
         child: Column(
           mainAxisAlignment:
               MainAxisAlignment.center, // вертикальное центрирование
@@ -105,7 +107,11 @@ class ConvertPage extends StatelessWidget {
                       _GridItem(
                         icon: Icons.insert_drive_file,
                         label: 'Files',
-                        onTap: () {},
+                        onTap: () => Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) => FilesConvertPage(),
+                              ),
+                            ),
                       ),
                       _GridItem(
                         icon: Icons.text_fields,
@@ -130,7 +136,11 @@ class ConvertPage extends StatelessWidget {
                       _GridItem(
                         icon: Icons.input,
                         label: 'Import',
-                        onTap: () {},
+                        onTap: () => Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) => ImportConvertPage(),
+                              ),
+                            ),
                       ),
                     ],
                   ),
@@ -217,7 +227,7 @@ class _GridItem extends StatelessWidget {
       width: 104.w, // адаптивная ширина
       height: 80.h, // адаптивная высота
       child: Material(
-        color: const Color(0xFFFFEBEB),
+        color:  ColorStyles.Pink,
         borderRadius: BorderRadius.circular(12.r),
         child: InkWell(
           onTap: onTap, // обработчик нажатия

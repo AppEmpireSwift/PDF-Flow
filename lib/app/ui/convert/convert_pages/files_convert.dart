@@ -4,19 +4,19 @@ import 'package:PDF_Flow/app/ui/convert/widgets/convert_button.dart';
 import 'package:PDF_Flow/app/ui/convert/widgets/convert_format.dart';
 import 'package:PDF_Flow/app/ui/convert/widgets/loading_overlay.dart';
 import 'package:PDF_Flow/app/ui/convert/widgets/selectable_file.dart';
-import 'package:PDF_Flow/app/ui/convert/widgets/text_field.dart';
 import 'package:PDF_Flow/style/color.style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class LinkPage extends StatefulWidget {
-  const LinkPage({Key? key}) : super(key: key);
+class FilesConvertPage extends StatefulWidget {
+  const FilesConvertPage({Key? key}) : super(key: key);
 
   @override
-  State<LinkPage> createState() => _GalleryFirstPageState();
+  State<FilesConvertPage> createState() => _FilesConvertPageState();
 }
 
-class _GalleryFirstPageState extends State<LinkPage> {
+class _FilesConvertPageState extends State<FilesConvertPage> {
+
   bool isLoading = false;
   bool showSuccess = false;
 
@@ -71,51 +71,14 @@ class _GalleryFirstPageState extends State<LinkPage> {
       ),
     ];
 
-    // return LoadingOverlay(
-    //   isLoading: isLoading,
-    //   child: Scaffold(
-    //     appBar: const CustomAppBar(
-    //       title: 'Convert link',
-    //       backgroundColor: ColorStyles.Background,
-    //     ),
-    //     body: Container(
-    //       color: ColorStyles.Background,
-    //       child: Container(
-    //         margin: EdgeInsets.only(left: 10.w, right: 10.w, bottom: 10.w),
-    //         child: showSuccess
-    //             ? const ConversionSuccess()
-    //             : Column(
-    //                 crossAxisAlignment: CrossAxisAlignment.center,
-    //                 children: [
-    //                   TextInputWidget(head: 'Link', text: 'Enter link here'),
-    //                   ConvertOptionSelector(
-    //                     title: 'Convert to',
-    //                     initialFormats: formats,
-    //                   ),
-    //                   const Spacer(),
-    //                   Align(
-    //                     alignment: Alignment.bottomCenter,
-    //                     child: ConvertButton(
-    //                       isEnabled: true,
-    //                       onPressed: _startConversion,
-    //                     ),
-    //                   ),
-    //                 ],
-    //               ),
-    //       ),
-    //     ),
-    //   ),
-    // );
-
-    return LoadingOverlay(
-      isLoading: isLoading,
-
-      child: Scaffold(
-        appBar: const CustomAppBar(
-          title: 'Convert link',
-          backgroundColor: ColorStyles.Background,
-        ),
-        body: Container(
+    return Scaffold(
+      appBar: const CustomAppBar(
+        title: 'Convert files',
+        backgroundColor: ColorStyles.Background,
+      ),
+      body: LoadingOverlay(
+        isLoading: isLoading,
+        child: Container(
           color: ColorStyles.Background,
           child: Container(
             margin: EdgeInsets.only(left: 10.w, right: 10.w, bottom: 10.w),
@@ -129,13 +92,11 @@ class _GalleryFirstPageState extends State<LinkPage> {
                         //   title: 'Convert from gallery',
                         //   backgroundColor: ColorStyles.Background,
                         // ),
-                        // SelectableFileWidget(
-                        //   head: 'Files',
-                        //   text: 'Click here for photo selection',
-                        //   onAddFile: () {},
-                        // ),
-                        TextInputWidget(head: 'Link', text: 'Enter link here'),
-
+                        SelectableFileWidget(
+                          head: 'Files',
+                          text: 'Click here for file selection',
+                          onAddFile: () {},
+                        ),
                         ConvertOptionSelector(
                           title: 'Convert to',
                           initialFormats: formats,
