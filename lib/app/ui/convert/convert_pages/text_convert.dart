@@ -102,6 +102,7 @@ class _TextConvertPageState extends State<TextConvertPage> {
                         ConvertOptionSelector(
                           title: 'Convert to',
                           initialFormats: formats,
+                          hasExtendedSettings: true,
                         ),
                         const Spacer(),
                         Align(
