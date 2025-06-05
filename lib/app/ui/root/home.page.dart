@@ -57,32 +57,69 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       body: IndexedStack(index: _currentIndex, children: _pages),
 
+      // bottomNavigationBar: BottomNavigationBar(
+      //   backgroundColor: ColorStyles.Surface,
+      //   currentIndex: 0,
+      //   selectedItemColor: ColorStyles.Outline_red,
+      //   unselectedItemColor: Colors.grey,
+      //   onTap: (index) {
+      //     setState(() {
+      //       _currentIndex = index; // Переключаем индекс
+      //     });
+      //   },
+      //   items: [
+      //     BottomNavigationBarItem(
+      //       icon: SvgPicture.asset(
+      //         Assets.vectors.files1,
+      //         width: 16, // можно задать размер и цвет, если нужно
+      //         height: 20, // для неактивного состояния
+      //       ),
+      //       label: 'Convert',
+      //     ),
+      //     BottomNavigationBarItem(icon: Icon(Icons.folder), label: 'Files'),
+      //     BottomNavigationBarItem(
+      //       icon: Icon(Icons.settings),
+      //       label: 'Settings',
+      //     ),
+      //   ],
+      // ),
+
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: ColorStyles.Surface,
-        currentIndex: 0,
-        selectedItemColor: ColorStyles.Outline_red,
-        unselectedItemColor: Colors.grey,
-        onTap: (index) {
-          setState(() {
-            _currentIndex = index; // Переключаем индекс
-          });
-        },
-        items: [
-          BottomNavigationBarItem(
-            icon: SvgPicture.asset(
-              Assets.vectors.files1,
-              width: 16, // можно задать размер и цвет, если нужно
-              height: 20, // для неактивного состояния
-            ),
-            label: 'Convert',
-          ),
-          BottomNavigationBarItem(icon: Icon(Icons.folder), label: 'Files'),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
-            label: 'Settings',
-          ),
-        ],
+  backgroundColor: ColorStyles.Surface,
+  currentIndex: _currentIndex, // Используем текущий индекс
+  selectedItemColor: ColorStyles.Outline_red,
+  unselectedItemColor: Colors.grey,
+  onTap: (index) {
+    setState(() {
+      _currentIndex = index;
+    });
+  },
+  items: [
+    BottomNavigationBarItem(
+      icon: SvgPicture.asset(
+        Assets.vectors.files1,
+        width: 16,
+        height: 20,
+        color: _currentIndex == 0 ? ColorStyles.Outline_red : Colors.grey,
       ),
+      label: 'Convert',
+    ),
+    BottomNavigationBarItem(
+      icon: Icon(
+        Icons.folder,
+        color: _currentIndex == 1 ? ColorStyles.Outline_red : Colors.grey,
+      ),
+      label: 'Files',
+    ),
+    BottomNavigationBarItem(
+      icon: Icon(
+        Icons.settings,
+        color: _currentIndex == 2 ? ColorStyles.Outline_red : Colors.grey,
+      ),
+      label: 'Settings',
+    ),
+  ],
+),
     );
   }
 
