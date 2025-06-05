@@ -2,6 +2,7 @@ import 'package:PDF_Flow/app/ui/convert/widgets/appbar.dart';
 import 'package:PDF_Flow/app/ui/convert/widgets/conversion_success.dart';
 import 'package:PDF_Flow/app/ui/convert/widgets/convert_button.dart';
 import 'package:PDF_Flow/app/ui/convert/widgets/convert_format.dart';
+import 'package:PDF_Flow/app/ui/convert/widgets/dropdownlist.dart';
 import 'package:PDF_Flow/app/ui/convert/widgets/loading_overlay.dart';
 import 'package:PDF_Flow/app/ui/convert/widgets/selectable_file.dart';
 import 'package:PDF_Flow/app/ui/convert/widgets/text_field.dart';
@@ -108,51 +109,53 @@ class _GalleryFirstPageState extends State<LinkPage> {
     // );
 
     return LoadingOverlay(
-      isLoading: isLoading,
-
-      child: Scaffold(
-        appBar: const CustomAppBar(
-          title: 'Convert link',
-          backgroundColor: ColorStyles.Background,
-        ),
-        body: Container(
-          color: ColorStyles.Background,
-          child: Container(
-            margin: EdgeInsets.only(left: 10.w, right: 10.w, bottom: 10.w),
-            child:
-                showSuccess
-                    ? const ConversionSuccess()
-                    : Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        // const CustomAppBar(
-                        //   title: 'Convert from gallery',
-                        //   backgroundColor: ColorStyles.Background,
-                        // ),
-                        // SelectableFileWidget(
-                        //   head: 'Files',
-                        //   text: 'Click here for photo selection',
-                        //   onAddFile: () {},
-                        // ),
-                        TextInputWidget(head: 'Link', text: 'Enter link here'),
-
-                        ConvertOptionSelector(
-                          title: 'Convert to',
-                          initialFormats: formats,
+  isLoading: isLoading,
+  child: Scaffold(
+    backgroundColor: ColorStyles.Background,
+    appBar: const CustomAppBar(
+      title: 'Convert link',
+      backgroundColor: ColorStyles.Background,
+    ),
+    body: LayoutBuilder( // ← Добавьте LayoutBuilder
+      builder: (context, constraints) {
+        return SingleChildScrollView( // ← И SingleChildScrollView
+          child: ConstrainedBox(
+            constraints: BoxConstraints(
+              minHeight: constraints.maxHeight,
+            ),
+            child: IntrinsicHeight( // ← Сохраняет естественную высоту
+              child: Container(
+                color: ColorStyles.Background,
+                child: Container(
+                  margin: EdgeInsets.only(left: 10.w, right: 10.w, bottom: 10.w),
+                  child: showSuccess
+                      ? const ConversionSuccess()
+                      : Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            TextInputWidget(head: 'Link', text: 'Enter link here'),
+                            ConvertOptionSelector(
+                              title: 'Convert to',
+                              initialFormats: formats,
+                            ),
+                            Spacer(), // ← Будет работать с IntrinsicHeight
+                            Align(
+                              alignment: Alignment.bottomCenter,
+                              child: ConvertButton(
+                                isEnabled: true,
+                                onPressed: _startConversion,
+                              ),
+                            ),
+                          ],
                         ),
-                        const Spacer(),
-                        Align(
-                          alignment: Alignment.bottomCenter,
-                          child: ConvertButton(
-                            isEnabled: true,
-                            onPressed: _startConversion,
-                          ),
-                        ),
-                      ],
-                    ),
+                ),
+              ),
+            ),
           ),
-        ),
-      ),
-    );
+        );
+      },
+    ),
+  ),
+);
   }
 }

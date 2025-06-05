@@ -22,6 +22,7 @@ class LoadingOverlay extends StatelessWidget {
             child: BackdropFilter(
               filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
               child: Container(
+                
                 color: Colors.black.withOpacity(0.2),
                 alignment: Alignment.center,
                 child: Column(
@@ -29,8 +30,7 @@ class LoadingOverlay extends StatelessWidget {
                   children: [
                     const Icon(Icons.sync, color: Colors.white, size: 64),
                     SizedBox(height: 12.h),
-                    Text('Converted...', style: TextStyle(color: ColorStyles.Black, fontSize: 16),                       overflow: TextOverflow.visible, // или TextOverflow.clip
-),
+                    Text('Converted...', style: TextStyle(color: ColorStyles.Black, fontSize: 16), overflow: TextOverflow.clip,) // или TextOverflow.clip),
 
                   ],
                 ),

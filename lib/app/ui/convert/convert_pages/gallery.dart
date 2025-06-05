@@ -80,7 +80,9 @@ class _GalleryFirstPageState extends State<GalleryFirstPage> {
         child: Container(
     color: ColorStyles.Background,
     child: Container(
-      margin: EdgeInsets.only(left: 10.w, right: 10.w, bottom: 10.w),
+      // margin: EdgeInsets.only(left: 10.w, right: 10.w, bottom: 10.w),
+                  margin: EdgeInsets.all(10.w),
+
       child: showSuccess
           ? const ConversionSuccess()
           : Column(
