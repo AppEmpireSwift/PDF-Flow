@@ -1,4 +1,3 @@
-
 // import 'package:PDF_Flow/app/ui/convert/widgets/appbar.dart';
 // import 'package:PDF_Flow/app/ui/root/widgets/context_menu.dart';
 // import 'package:flutter/material.dart';
@@ -83,8 +82,6 @@
 //   }
 // }
 
-
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:PDF_Flow/style/color.style.dart';
@@ -114,12 +111,11 @@ class _MergePageState extends State<MergePage> {
   // Список только выбранных файлов для drag mode
   List<Map<String, String>> selectedForMerge = [];
 
- @override
-void initState() {
-  super.initState();
-  selectedFiles = List<bool>.filled(files.length, false);
-}
-
+  @override
+  void initState() {
+    super.initState();
+    selectedFiles = List<bool>.filled(files.length, false);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -133,69 +129,81 @@ void initState() {
       ),
       body: Column(
         children: [
+          Padding(
+            padding: EdgeInsets.only(top: 24.h, left: 16.w),
+            child: Align(
+              alignment: Alignment.topLeft,
+              child: Text(
+                'You can arrange the files in the order in which you want to\n merge them',
+                style: TextStyle(fontSize: 10.sp, color: ColorStyles.Grey),
+              ),
+            ),
+          ),
           SizedBox(height: 16.h),
           Expanded(
-            child: dragMode
-                ? ReorderableListView.builder(
-                    padding: const EdgeInsets.only(bottom: 16),
-                    itemCount: selectedForMerge.length,
-                    onReorder: (oldIndex, newIndex) {
-                      setState(() {
-                        if (newIndex > oldIndex) newIndex--;
-                        final item = selectedForMerge.removeAt(oldIndex);
-                        selectedForMerge.insert(newIndex, item);
-                      });
-                    },
-                    itemBuilder: (context, index) {
-                      final file = selectedForMerge[index];
-                      return FileItemTile(
-                        key: ValueKey(file['fileName']),
-                        fileName: file['fileName']!,
-                        date: file['date']!,
-                        isDragMode: true,
-                      );
-                    },
-                  )
-                : ListView.builder(
-                    itemCount: files.length,
-                    itemBuilder: (context, index) {
-                      final file = files[index];
-                      return FileItemTile(
-                        fileName: file['fileName']!,
-                        date: file['date']!,
-                        isSelectable: true,
-                        isSelected: selectedFiles[index],
-                        onSelectedChanged: (selected) {
-                          setState(() {
-                            selectedFiles[index] = selected!;
-                          });
-                        },
-                        onTapDown: (_) {},
-                        onMorePressed: () {},
-                      );
-                    },
-                  ),
+            child:
+                dragMode
+                    ? ReorderableListView.builder(
+                      padding: const EdgeInsets.only(bottom: 16),
+                      itemCount: selectedForMerge.length,
+                      onReorder: (oldIndex, newIndex) {
+                        setState(() {
+                          if (newIndex > oldIndex) newIndex--;
+                          final item = selectedForMerge.removeAt(oldIndex);
+                          selectedForMerge.insert(newIndex, item);
+                        });
+                      },
+                      itemBuilder: (context, index) {
+                        final file = selectedForMerge[index];
+                        return FileItemTile(
+                          key: ValueKey(file['fileName']),
+                          fileName: file['fileName']!,
+                          date: file['date']!,
+                          isDragMode: true,
+                        );
+                      },
+                    )
+                    : ListView.builder(
+                      itemCount: files.length,
+                      itemBuilder: (context, index) {
+                        final file = files[index];
+                        return FileItemTile(
+                          fileName: file['fileName']!,
+                          date: file['date']!,
+                          isSelectable: true,
+                          isSelected: selectedFiles[index],
+                          onSelectedChanged: (selected) {
+                            setState(() {
+                              selectedFiles[index] = selected!;
+                            });
+                          },
+                          onTapDown: (_) {},
+                          onMorePressed: () {},
+                        );
+                      },
+                    ),
           ),
           Container(
             padding: EdgeInsets.all(16.r),
             width: double.infinity,
             child: ElevatedButton(
-              onPressed: dragMode
-                  ? () {
-                      // Тут будет логика конвертации
-                    }
-                  : anySelected
+              onPressed:
+                  dragMode
                       ? () {
-                          setState(() {
-                            dragMode = true;
-                            selectedForMerge = [];
-                            for (int i = 0; i < files.length; i++) {
-                              if (selectedFiles[i]) {
-                                selectedForMerge.add(files[i]);
-                              }
+                        // Тут будет логика конвертации
+                      }
+                      : anySelected
+                      ? () {
+                        setState(() {
+                          dragMode = true;
+                          selectedForMerge = [];
+                          for (int i = 0; i < files.length; i++) {
+                            if (selectedFiles[i]) {
+                              selectedForMerge.add(files[i]);
                             }
-                          });
-                        }
+                          }
+                        });
+                      }
                       : null,
               style: ElevatedButton.styleFrom(
                 backgroundColor:
@@ -207,7 +215,7 @@ void initState() {
                 ),
               ),
               child: Text(
-                dragMode ? 'Convert' : 'Next',
+                dragMode ? 'Merge' : 'Next',
                 style: TextStyle(fontSize: 16.sp),
               ),
             ),
