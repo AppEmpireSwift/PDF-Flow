@@ -70,49 +70,50 @@ class _GalleryFirstPageState extends State<GalleryFirstPage> {
       ),
     ];
 
-    return Scaffold(
-      appBar: const CustomAppBar(
-        title: 'Convert from gallery',
-        backgroundColor: ColorStyles.Background,
-      ),
-      body: LoadingOverlay(
-        isLoading: isLoading,
-        child: Container(
-    color: ColorStyles.Background,
-    child: Container(
-      // margin: EdgeInsets.only(left: 10.w, right: 10.w, bottom: 10.w),
-                  margin: EdgeInsets.all(10.w),
+    return LoadingOverlay(
+      isLoading: isLoading,
+      child: Scaffold(
+        appBar: const CustomAppBar(
+          title: 'Convert from gallery',
+          backgroundColor: ColorStyles.Background,
+        ),
+        body: Container(
+          color: ColorStyles.Background,
+          child: Container(
+            // margin: EdgeInsets.only(left: 10.w, right: 10.w, bottom: 10.w),
+            margin: EdgeInsets.all(10.w),
 
-      child: showSuccess
-          ? const ConversionSuccess()
-          : Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                // const CustomAppBar(
-                //   title: 'Convert from gallery',
-                //   backgroundColor: ColorStyles.Background,
-                // ),
-                SelectableFileWidget(
-                  head: 'Files',
-                  text: 'Click here for photo selection',
-                  onAddFile: () {},
-                ),
-                ConvertOptionSelector(
-                  title: 'Convert to',
-                  initialFormats: formats,
-                ),
-                const Spacer(),
-                Align(
-                  alignment: Alignment.bottomCenter,
-                  child: ConvertButton(
-                    isEnabled: true,
-                    onPressed: _startConversion,
-                  ),
-                ),
-              ],
-            ),
-    ),
-  ),
+            child:
+                showSuccess
+                    ? const ConversionSuccess()
+                    : Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        // const CustomAppBar(
+                        //   title: 'Convert from gallery',
+                        //   backgroundColor: ColorStyles.Background,
+                        // ),
+                        SelectableFileWidget(
+                          head: 'Files',
+                          text: 'Click here for photo selection',
+                          onAddFile: () {},
+                        ),
+                        ConvertOptionSelector(
+                          title: 'Convert to',
+                          initialFormats: formats,
+                        ),
+                        const Spacer(),
+                        Align(
+                          alignment: Alignment.bottomCenter,
+                          child: ConvertButton(
+                            isEnabled: true,
+                            onPressed: _startConversion,
+                          ),
+                        ),
+                      ],
+                    ),
+          ),
+        ),
       ),
     );
   }

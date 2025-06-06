@@ -16,7 +16,6 @@ class FilesConvertPage extends StatefulWidget {
 }
 
 class _FilesConvertPageState extends State<FilesConvertPage> {
-
   bool isLoading = false;
   bool showSuccess = false;
 
@@ -71,17 +70,17 @@ class _FilesConvertPageState extends State<FilesConvertPage> {
       ),
     ];
 
-    return Scaffold(
-      appBar: const CustomAppBar(
-        title: 'Convert files',
-        backgroundColor: ColorStyles.Background,
-      ),
-      body: LoadingOverlay(
-        isLoading: isLoading,
-        child: Container(
+    return LoadingOverlay(
+      isLoading: isLoading,
+      child: Scaffold(
+        appBar: const CustomAppBar(
+          title: 'Convert files',
+          backgroundColor: ColorStyles.Background,
+        ),
+        body: Container(
           color: ColorStyles.Background,
           child: Container(
-         //   margin: EdgeInsets.only(left: 10.w, right: 10.w, bottom: 10.w),
+            //   margin: EdgeInsets.only(left: 10.w, right: 10.w, bottom: 10.w),
             margin: EdgeInsets.all(10.w),
 
             child:
