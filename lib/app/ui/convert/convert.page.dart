@@ -3,6 +3,7 @@ import 'package:PDF_Flow/app/ui/convert/convert_pages/import_convert.dart';
 import 'package:PDF_Flow/app/ui/convert/link.dart';
 import 'package:PDF_Flow/app/ui/convert/convert_pages/gallery.dart';
 import 'package:PDF_Flow/app/ui/convert/convert_pages/text_convert.dart';
+import 'package:PDF_Flow/app/ui/convert/merge.dart';
 import 'package:PDF_Flow/app/ui/convert/widgets/conversion_success.dart';
 import 'package:PDF_Flow/gen/assets.gen.dart';
 import 'package:PDF_Flow/style/color.style.dart';
@@ -155,7 +156,11 @@ class ConvertPage extends StatelessWidget {
                 vertical: 8.w,
               ), // отступы слева и справа
               child: ElevatedButton.icon(
-                onPressed: () {},
+                onPressed:  () => Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) => MergePage(),
+                              ),
+                            ),
                 icon: Icon(Icons.picture_as_pdf, size: 20.r),
                 label: Text(
                   'Merge Files into PDF',

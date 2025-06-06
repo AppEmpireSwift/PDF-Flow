@@ -71,28 +71,6 @@ class FilledFilesPage extends StatelessWidget {
             child: Expanded(
               child: ListView(
                 children: [
-                  // FileItemTile(
-                  //   // iconPath: 'assets/icons/pdf_icon.png',
-                  //   fileName: 'PDF_File_3456789_234.pdf',
-                  //   date: '2025-02-10 04:21 PM',
-                  //   onTapDown: () {
-                  //     // showModalBottomSheet(
-                  //     //   context: context,
-                  //     //   backgroundColor: const Color(
-                  //     //     0xFFFFF4F4,
-                  //     //   ), // светло-розовый фон
-                  //     //   shape: const RoundedRectangleBorder(
-                  //     //     borderRadius: BorderRadius.vertical(
-                  //     //       top: Radius.circular(16),
-                  //     //     ),
-                  //     //   ),
-                  //     //   builder: (context) => const FileOptionsMenu(),
-                  //     // );
-                  //   },
-                  //   onMorePressed: () {
-                  //     // Покажи bottom sheet или popup menu
-                  //   },
-                  // ),
                   FileItemTile(
                     // iconPath: 'assets/icons/pdf_icon.png',
                     fileName: 'PDF_File_3456789_234.pdf',
@@ -126,93 +104,6 @@ class FilledFilesPage extends StatelessWidget {
           ),
         ],
       ),
-
-      // body: Padding(
-      //   padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
-      //   child: Column(
-      //     children: [
-      //       // Row with "0 Files" and Sort
-      //       Row(
-      //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      //         children: [
-      //           Text('0 Files', style: TextStyle(fontSize: 14.sp)),
-      //           Row(
-      //             children: [
-      //               Text('Sort by: ', style: TextStyle(fontSize: 14.sp)),
-      //               Text(
-      //                 'Date',
-      //                 style: TextStyle(
-      //                   fontSize: 14.sp,
-      //                   fontWeight: FontWeight.bold,
-      //                   color: Colors.red,
-      //                 ),
-      //               ),
-      //               Icon(Icons.keyboard_arrow_down, color: Colors.red),
-      //             ],
-      //           ),
-      //         ],
-      //       ),
-      //       SizedBox(height: 40.h),
-
-      //       // Center section (No files)
-      //       Expanded(
-      //         child: Column(
-      //           mainAxisAlignment: MainAxisAlignment.center,
-      //           children: [
-      //             SizedBox(height: 8.h),
-      //             Text(
-      //               'No files',
-      //               style: TextStyle(
-      //                 fontWeight: FontWeight.bold,
-      //                 fontSize: 18.sp,
-      //                 color: Colors.black,
-      //               ),
-      //             ),
-      //             SizedBox(height: 4.h),
-      //             Text(
-      //               "You don't have any converted files",
-      //               style: TextStyle(fontSize: 14.sp, color: Colors.grey),
-      //             ),
-      //             SizedBox(height: 8.h),
-      //             ElevatedButton(
-      //               onPressed: () {
-      //                 // Навигация на Convert или логика
-      //               },
-      //               style: ElevatedButton.styleFrom(
-      //                 backgroundColor: ColorStyles.Primary,
-      //                 padding: EdgeInsets.symmetric(
-      //                   horizontal: 32.w,
-      //                   vertical: 12.h,
-      //                 ),
-      //                 shape: RoundedRectangleBorder(
-      //                   borderRadius: BorderRadius.circular(12.r),
-      //                 ),
-      //               ),
-      //               child: Row(
-      //                mainAxisAlignment: MainAxisAlignment.center,
-      //                 children: [
-      //                   Text(
-      //                     'Convert now',
-      //                     style: TextStyle(
-      //                       fontSize: 16.sp,
-      //                       color: ColorStyles.On_Primary,
-      //                     ),
-      //                   ),
-      //                   SizedBox(width: 8.w),
-      //                   Icon(
-      //                     CupertinoIcons.chevron_right,
-      //                     size: 18.sp,
-      //                     color: ColorStyles.On_Primary,
-      //                   ),
-      //                 ],
-      //               ),
-      //             ),
-      //           ],
-      //         ),
-      //       ),
-      //     ],
-      //   ),
-      // ),
     );
   }
 }
