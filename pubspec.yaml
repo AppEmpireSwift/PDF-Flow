@@ -11,6 +11,8 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: 1.0.8 
+  cupertino_popover: ^1.0.0
+  flutter_popover: ^0.2.6 
 
   flutter_keyboard_visibility: 6.0.0
   flutter_screenutil: 5.9.1

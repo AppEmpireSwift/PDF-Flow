@@ -88,7 +88,7 @@ class _TextConvertPageState extends State<TextConvertPage> {
                     padding: EdgeInsets.all(10.w),
                     child:
                         showSuccess
-                            ? const ConversionSuccess()
+                            ? const ConversionSuccess(text: 'Conversion completed',)
                             : Column(
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
