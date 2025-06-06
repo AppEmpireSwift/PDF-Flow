@@ -73,45 +73,40 @@ class _GalleryFirstPageState extends State<GalleryFirstPage> {
     return LoadingOverlay(
       isLoading: isLoading,
       child: Scaffold(
+                  backgroundColor: ColorStyles.Background,
+
         appBar: const CustomAppBar(
           title: 'Convert from gallery',
           backgroundColor: ColorStyles.Background,
         ),
-        body: Container(
-          color: ColorStyles.Background,
+        body: SingleChildScrollView(  // Добавили SingleChildScrollView для прокрутки
           child: Container(
-            // margin: EdgeInsets.only(left: 10.w, right: 10.w, bottom: 10.w),
+            // color: ColorStyles.Background,
             margin: EdgeInsets.all(10.w),
-
-            child:
-                showSuccess
-                    ? const ConversionSuccess()
-                    : Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        // const CustomAppBar(
-                        //   title: 'Convert from gallery',
-                        //   backgroundColor: ColorStyles.Background,
-                        // ),
-                        SelectableFileWidget(
-                          head: 'Files',
-                          text: 'Click here for photo selection',
-                          onAddFile: () {},
+            child: showSuccess
+                ? const ConversionSuccess()
+                : Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      SelectableFileWidget(
+                        head: 'Files',
+                        text: 'Click here for photo selection',
+                        onAddFile: () {},
+                      ),
+                      ConvertOptionSelector(
+                        title: 'Convert to',
+                        initialFormats: formats,
+                      ),
+                      const SizedBox(height: 20),  // Добавляем отступ снизу
+                      Align(
+                        alignment: Alignment.bottomCenter,
+                        child: ConvertButton(
+                          isEnabled: true,
+                          onPressed: _startConversion,
                         ),
-                        ConvertOptionSelector(
-                          title: 'Convert to',
-                          initialFormats: formats,
-                        ),
-                        const Spacer(),
-                        Align(
-                          alignment: Alignment.bottomCenter,
-                          child: ConvertButton(
-                            isEnabled: true,
-                            onPressed: _startConversion,
-                          ),
-                        ),
-                      ],
-                    ),
+                      ),
+                    ],
+                  ),
           ),
         ),
       ),
