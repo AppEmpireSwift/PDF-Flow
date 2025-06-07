@@ -79,27 +79,24 @@ class _ConvertOptionSelectorState extends State<ConvertOptionSelector> {
     });
   }
 
-  void _showOrientationPopover() {
-    final RenderBox renderBox =
-        _orientationKey.currentContext!.findRenderObject() as RenderBox;
-    final target = renderBox.localToGlobal(Offset.zero) & renderBox.size;
+  void _showOrientationPopover(BuildContext buttonContext) {
+  showPopover(
+    context: buttonContext,
+    bodyBuilder: (context) => _buildOrientationPopoverContent(),
+    direction: PopoverDirection.bottom,
+    width: 180,
+    height: 110,
+    backgroundColor: Colors.transparent,
+    barrierColor: Colors.black12,
+    arrowHeight: 8,
+    arrowWidth: 16,
+    transitionDuration: const Duration(milliseconds: 150),
+    shadow: [],
+    radius: 12,
+    barrierDismissible: true,
+  );
+}
 
-    showPopover(
-      context: context,
-      bodyBuilder: (context) => _buildOrientationPopoverContent(),
-      direction: PopoverDirection.bottom,
-      width: 180,
-      height: 110,
-      backgroundColor: Colors.transparent,
-      barrierColor: Colors.black12,
-      arrowHeight: 8,
-      arrowWidth: 16,
-      transitionDuration: const Duration(milliseconds: 150),
-      shadow: [],
-      radius: 12,
-      barrierDismissible: true,
-    );
-  }
 
   Widget _buildOrientationPopoverContent() {
     return ClipRRect(
@@ -223,24 +220,25 @@ class _ConvertOptionSelectorState extends State<ConvertOptionSelector> {
     );
   }
 
-  Widget _buildExtendedSettings() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text('PDF Settings',
-            style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.bold)),
-        SizedBox(height: 12.h),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text('Page orientation', style: TextStyle(fontSize: 14.sp)),
-            InkWell(
-              key: _orientationKey,
-              onTap: _showOrientationPopover,
-              borderRadius: BorderRadius.circular(8.r),
+
+Widget _buildExtendedSettings() {
+  return Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      Text('PDF Settings',
+          style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.bold)),
+      SizedBox(height: 12.h),
+      Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text('Page orientation', style: TextStyle(fontSize: 14.sp)),
+
+          /// ✅ Оборачиваем кнопку в Builder
+          Builder(
+            builder: (buttonContext) => GestureDetector(
+              onTap: () => _showOrientationPopover(buttonContext),
               child: Container(
-                padding:
-                    EdgeInsets.symmetric(horizontal: 12.w, vertical: 8.h),
+                padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 8.h),
                 child: Row(
                   children: [
                     Text(
@@ -256,35 +254,245 @@ class _ConvertOptionSelectorState extends State<ConvertOptionSelector> {
                 ),
               ),
             ),
-          ],
-        ),
-        Padding(
-          padding: EdgeInsets.symmetric(vertical: 12.h),
-          child: Divider(height: 1, color: ColorStyles.Light_gray),
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text('Page size', style: TextStyle(fontSize: 14.sp)),
-            InkWell(
-              onTap: () {},
-              borderRadius: BorderRadius.circular(8.r),
-              child: Container(
-                padding:
-                    EdgeInsets.symmetric(horizontal: 12.w, vertical: 8.h),
-                child: Row(
-                  children: [
-                    Text('A4', style: TextStyle(color: ColorStyles.Grey)),
-                    SizedBox(width: 4.w),
-                    Icon(Icons.arrow_drop_down,
-                        size: 20.r, color: ColorStyles.Grey),
-                  ],
-                ),
+          ),
+        ],
+      ),
+      Padding(
+        padding: EdgeInsets.symmetric(vertical: 12.h),
+        child: Divider(height: 1, color: ColorStyles.Light_gray),
+      ),
+      Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text('Page size', style: TextStyle(fontSize: 14.sp)),
+          InkWell(
+            onTap: () {},
+            borderRadius: BorderRadius.circular(8.r),
+            child: Container(
+              padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 8.h),
+              child: Row(
+                children: [
+                  Text('A4', style: TextStyle(color: ColorStyles.Grey)),
+                  SizedBox(width: 4.w),
+                  Icon(Icons.arrow_drop_down,
+                      size: 20.r, color: ColorStyles.Grey),
+                ],
               ),
             ),
-          ],
-        ),
-      ],
-    );
-  }
+          ),
+        ],
+      ),
+    ],
+  );
 }
+
+  // Widget _buildExtendedSettings() {
+  //   return Column(
+  //     crossAxisAlignment: CrossAxisAlignment.start,
+  //     children: [
+  //       Text('PDF Settings',
+  //           style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.bold)),
+  //       SizedBox(height: 12.h),
+  //       Row(
+  //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+  //         children: [
+  //           Text('Page orientation', style: TextStyle(fontSize: 14.sp)),
+  //           GestureDetector(
+  //             //key: _orientationKey,
+  //             onTap: _showOrientationPopover,
+  //             //borderRadius: BorderRadius.circular(8.r),
+  //             child: Container(
+  //               padding:
+  //                   EdgeInsets.symmetric(horizontal: 12.w, vertical: 8.h),
+  //               child: Row(
+  //                 children: [
+  //                   Text(
+  //                     _selectedOrientation == PageOrientation.vertical
+  //                         ? 'Vertical'
+  //                         : 'Horizontal',
+  //                     style: TextStyle(color: ColorStyles.Grey),
+  //                   ),
+  //                   SizedBox(width: 4.w),
+  //                   Icon(Icons.arrow_drop_down,
+  //                       size: 20.r, color: ColorStyles.Grey),
+  //                 ],
+  //               ),
+  //             ),
+  //           ),
+  //         ],
+  //       ),
+  //       Padding(
+  //         padding: EdgeInsets.symmetric(vertical: 12.h),
+  //         child: Divider(height: 1, color: ColorStyles.Light_gray),
+  //       ),
+  //       Row(
+  //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+  //         children: [
+  //           Text('Page size', style: TextStyle(fontSize: 14.sp)),
+  //           InkWell(
+  //             onTap: () {},
+  //             borderRadius: BorderRadius.circular(8.r),
+  //             child: Container(
+  //               padding:
+  //                   EdgeInsets.symmetric(horizontal: 12.w, vertical: 8.h),
+  //               child: Row(
+  //                 children: [
+  //                   Text('A4', style: TextStyle(color: ColorStyles.Grey)),
+  //                   SizedBox(width: 4.w),
+  //                   Icon(Icons.arrow_drop_down,
+  //                       size: 20.r, color: ColorStyles.Grey),
+  //                 ],
+  //               ),
+  //             ),
+  //           ),
+  //         ],
+  //       ),
+  //     ],
+  //   );
+  // }
+}
+
+// import 'package:flutter/material.dart';
+// import 'package:popover/popover.dart';
+// import 'dart:ui';
+
+// enum PageOrientation { vertical, horizontal }
+
+// class ConvertOptionSelector extends StatefulWidget {
+//   final String title;
+
+//   const ConvertOptionSelector({
+//     Key? key,
+//     required this.title,
+//   }) : super(key: key);
+
+//   @override
+//   State<ConvertOptionSelector> createState() => _ConvertOptionSelectorState();
+// }
+
+// class _ConvertOptionSelectorState extends State<ConvertOptionSelector> {
+//   final GlobalKey _orientationKey = GlobalKey();
+//   PageOrientation _selectedOrientation = PageOrientation.vertical;
+
+//   void _showOrientationPopover() {
+//     final RenderBox renderBox =
+//         _orientationKey.currentContext!.findRenderObject() as RenderBox;
+//     final Offset offset = renderBox.localToGlobal(Offset.zero);
+//     final Size size = renderBox.size;
+
+//     final Rect targetRect = Rect.fromLTWH(
+//       offset.dx,
+//       offset.dy,
+//       size.width,
+//       size.height,
+//     );
+
+//     showPopover(
+//       context: context,
+//       bodyBuilder: (context) => _buildOrientationPopoverContent(),
+//       direction: PopoverDirection.bottom,
+//       width: 200,
+//       height: 110,
+//       arrowHeight: 8,
+//       arrowWidth: 16,
+//       backgroundColor: Colors.transparent,
+//       barrierColor: Colors.black12,
+//       radius: 12,
+//       shadow: [],
+//       //position: targetRect,
+//     );
+//   }
+
+//   Widget _buildOrientationPopoverContent() {
+//     return ClipRRect(
+//       borderRadius: BorderRadius.circular(16),
+//       child: BackdropFilter(
+//         filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+//         child: Container(
+//           decoration: BoxDecoration(
+//             color: Colors.white.withOpacity(0.85),
+//             borderRadius: BorderRadius.circular(16),
+//           ),
+//           padding: const EdgeInsets.symmetric(vertical: 12),
+//           child: Column(
+//             mainAxisSize: MainAxisSize.min,
+//             children: [
+//               _buildOrientationItem('Vertical', PageOrientation.vertical),
+//               _buildOrientationItem('Horizontal', PageOrientation.horizontal),
+//             ],
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+
+//   Widget _buildOrientationItem(String title, PageOrientation orientation) {
+//     final isSelected = _selectedOrientation == orientation;
+
+//     return InkWell(
+//       onTap: () {
+//         setState(() {
+//           _selectedOrientation = orientation;
+//         });
+//         Navigator.of(context).pop();
+//       },
+//       child: Container(
+//         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+//         child: Row(
+//           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//           children: [
+//             Text(title),
+//             if (isSelected)
+//               const Icon(Icons.check, size: 18, color: Colors.red),
+//           ],
+//         ),
+//       ),
+//     );
+//   }
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Container(
+//       padding: const EdgeInsets.all(16),
+//       decoration: BoxDecoration(
+//         color: Colors.white,
+//         borderRadius: BorderRadius.circular(12),
+//         boxShadow: [BoxShadow(color: Colors.black12, blurRadius: 4)],
+//       ),
+//       child: Column(
+//         crossAxisAlignment: CrossAxisAlignment.start,
+//         children: [
+//           Text(widget.title, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+//           const SizedBox(height: 20),
+//           Row(
+//             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//             children: [
+//               const Text('Page orientation:'),
+//               GestureDetector(
+//                 key: _orientationKey,
+//                 onTap: _showOrientationPopover,
+//                 child: Container(
+//                   padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+//                   decoration: BoxDecoration(
+//                     color: Colors.grey[200],
+//                     borderRadius: BorderRadius.circular(8),
+//                     border: Border.all(color: Colors.grey),
+//                   ),
+//                   child: Row(
+//                     children: [
+//                       Text(
+//                         _selectedOrientation == PageOrientation.vertical ? 'Vertical' : 'Horizontal',
+//                       ),
+//                       const SizedBox(width: 4),
+//                       const Icon(Icons.arrow_drop_down),
+//                     ],
+//                   ),
+//                 ),
+//               ),
+//             ],
+//           ),
+//         ],
+//       ),
+//     );
+//   }
+// }
